@@ -1,0 +1,1 @@
+ul.timeline:before,ul.timeline>li:before{content:' ';background:#146da5;display:inline-block;position:absolute;z-index:400}ul.timeline{list-style-type:none;position:relative}ul.timeline:before{right:29px;width:2px;height:100%}ul.timeline>li{margin:20px 0;padding-right:20px}ul.timeline>li:before{border-radius:50%;border:3px solid #fff;right:20px;width:20px;height:20px}

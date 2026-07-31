@@ -1,0 +1,35 @@
+{% load static %}
+
+
+
+<section class="category-road-map section-height-fit">
+        <div class="container">
+            <h1 class="text-light fw-bold fm-morabba d-flex align-items-center gap-3">
+                <div width="56px" height="56px"
+                    style="background-color: #ff8b00;box-shadow: 0 0 #0000, 0 0 #0000, -12px 12px 24px 0px rgb(255 139 0 / 31%);"
+                    class="rounded-4 d-flex align-items-center">
+                    <svg width="56px" height="56px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <g data-name="road tracking">
+                            <path fill="#fff"
+                                d="m8 56 2.11-7L8 42l13 7-13 7zM47.5 50H24a1 1 0 0 1 0-2h23.5a4.5 4.5 0 0 0 0-9h-31a6.5 6.5 0 1 1 0-13H40a1 1 0 0 1 0 2H16.5a4.5 4.5 0 0 0 0 9h31a6.5 6.5 0 0 1 0 13zM43 25a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0v16a1 1 0 0 1-1 1z" />
+                            <path fill="#fff" d="M43 16h10l-3-3.96L53 8H43v8z" />
+                            <circle cx="43" fill="#fff" cy="27" r="3" />
+                        </g>
+                    </svg>
+                </div>
+                نقشه های راه
+            </h1>
+            <div class="row justify-content-center">
+                {% for roadmap in roadmaps %}
+                    <div class="col-auto my-3">
+                        <a href="{% url 'roadmaps:RoadMapListView' roadmap.id %}">
+                            <img src="{{ roadmap.main_image.url }}" class="rounded-4 roade-map-img img-fluid"
+                                alt=" img-fluid">
+                        </a>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>

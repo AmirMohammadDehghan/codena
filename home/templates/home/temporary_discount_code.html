@@ -1,0 +1,84 @@
+ <!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم</title>
+</head>
+<body>
+    <style>
+        
+body {
+  background-color: #e9e9e9;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+select, input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+button[type="submit"] {
+  background-color: #428bca;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  form {
+    margin: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  form {
+    margin: 15px;
+  }
+}
+    </style>
+    <form>
+    <label for="select-field">دوره ها</label>
+    
+    <select  id="source" onchange="copyTextValue()">
+        
+      {% for course in courses %}
+      <option value="{{course.slug}}">{{course.name}}</option>
+      {% endfor %}
+    </select>
+    <input type="hidden" name="selected_course" id='destination'>
+    <label for="text-field">کد تخفیف</label>
+    <input type="text" id="text-field" placeholder="Enter text" dir="rtl">
+    
+    <button type="submit">ثبت</button>
+  </form>
+</body>
+</html>
+
+
+<script>
+    function copyTextValue() {
+        var text1 = document.getElementById("source").value;
+        document.getElementById("destination").value = text1;
+    }
+</script> 

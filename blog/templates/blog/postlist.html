@@ -1,0 +1,96 @@
+{% extends './../base.html' %}
+
+{% load static %}
+{% block title %}
+  لیست پست های وبلاگ
+{% endblock %}
+
+{% block content %}
+<section class="section-height-fit mt-5">
+        <div class="container text-center">
+            <h1 class="title mb-0">
+                اخبار، ایده ها و داستان های دنیای برنامه نویسی
+            </h1>
+            <br>
+            <div data-bs-toggle="modal" data-bs-target="#searchModal" aria-label="بازکردن جست و جو"
+                    class="position-relative d-flex align-items-strech mw-100 search-blog-container mx-auto">
+                    <input type="text" class="search-blog-input m-2" name="" id="" placeholder="جست و جو">
+                    <button class="btn ms-auto m-2 search-blog-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="#cecece"
+                            style="z-index: 1;right: 13px;top: 10px;">
+                            <path
+                                d="M17.7531 16.7188L13.5656 12.5312C14.4719 11.4219 14.9719 10.025 14.9719 8.5C14.9719 4.90937 12.0616 2 8.47188 2C4.88219 2 2 4.91031 2 8.5C2 12.0897 4.91001 15 8.47188 15C9.99657 15 11.3953 14.4716 12.5031 13.5925L16.6906 17.78C16.8656 17.9281 17.0594 18 17.25 18C17.4406 18 17.6338 17.9268 17.7803 17.7803C18.0719 17.4875 18.0719 17.0125 17.7531 16.7188ZM3.50001 8.5C3.50001 5.74312 5.74313 3.5 8.50001 3.5C11.2569 3.5 13.5 5.74312 13.5 8.5C13.5 11.2569 11.2569 13.5 8.50001 13.5C5.74313 13.5 3.50001 11.2563 3.50001 8.5Z"
+                                fill="#fff"></path>
+                        </svg>
+                        جست و جو
+                    </button>
+                </div>
+        </div>
+    </section>
+    <div class="space-border container mx-auto"></div>
+ <section class="section-height-fit blog">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="text-light fw-bold fm-morabba d-flex align-items-center gap-3">
+                    <svg id="news" width="45" height="45">
+                        <path d="M43,11H40V39a3,3,0,0,0,6,0V14A3,3,0,0,0,43,11Z" />
+                        <rect x="8" y="15" width="9" height="8" />
+                        <path
+                            d="M38,39V10a4,4,0,0,0-4-4H6a4,4,0,0,0-4,4V39a3,3,0,0,0,3,3H39.026A4.948,4.948,0,0,1,38,39ZM6,15a2,2,0,0,1,2-2h9a2,2,0,0,1,2,2v8a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2ZM33,35H7a1,1,0,0,1,0-2H33a1,1,0,0,1,0,2Zm0-5H7a1,1,0,0,1,0-2H33a1,1,0,0,1,0,2Zm0-5H23a1,1,0,0,1,0-2H33a1,1,0,0,1,0,2Zm0-5H23a1,1,0,0,1,0-2H33a1,1,0,0,1,0,2Zm0-5H23a1,1,0,0,1,0-2H33a1,1,0,0,1,0,2Z" />
+                    </svg>
+                    مقالات ما
+                </h1>
+            </div>
+            <div class="row mt-3">
+                {% for post in posts %}
+                <div class="col-xl-3 col-lg-4 col-md-6 my-2">
+                    <div class="card">
+                        <a href="">
+                            <img src="{% static 'assets/img/lazy-img.webp' %}" data-src="{{ post.image.url }}"
+                                class="lazy card-img-top rounded-4" alt="...">
+                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <h2 class="card-title fs-4 fw-bold">
+                                <a class="text-light" href="{% url 'blog:detail_page' post.id post.slug %}">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                            <p class="card-text text-justify">
+                               {{ post.snippet }}
+                            </p>
+                            <a href="" class="link-light">
+                                <div class="blog-card-footer d-flex align-items-center gap-2">
+                                    <img class="rounded-circle blog-card-footer-avatar" src="{{ post.anthor.user_image.url }}"
+                                        alt="">
+                                    <span>{{ post.anthor.username }}</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+            </div>
+             <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a class="btn" href="?page=1">&laquo; اولین</a>
+                <a class="btn" href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+            {% endif %}
+
+            <span class="current">
+                صفحه  {{ page_obj.number }} از {{ page_obj.paginator.num_pages }} صفحه .
+            </span>
+
+            {% if page_obj.has_next %}
+                <a class="btn" href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                <a class="btn" href="?page={{ page_obj.paginator.num_pages }}">آخرین &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+        </div>
+    </section>
+
+{% endblock content %}

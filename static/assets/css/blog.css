@@ -1,0 +1,223 @@
+.content li,
+.content p {
+    word-spacing: 1.1px;
+    text-align: justify
+}
+
+.content p img,
+.content td p {
+    margin-bottom: 0
+}
+
+.content a,
+.latest-post-link:hover {
+    color: var(--color-primary) !important
+}
+
+.content p {
+    line-height: 2.2;
+    margin-bottom: 1.25rem;
+    font-size: 1.125rem
+}
+
+.content a {
+    text-decoration: none;
+    transition: color .3s
+}
+
+.content a:hover {
+    color: #a56aff !important;
+    transition: color .3s
+}
+
+.content h2 {
+    font-size: 1.625rem
+}
+
+.content h3 {
+    font-size: 1.5rem
+}
+
+.content h2,
+.content h3 {
+    color: #fff;
+    line-height: 2;
+    margin-bottom: .25rem;
+    font-family: morabba
+}
+
+.content img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    border-radius: var(--bs-border-radius-xl) !important;
+    margin-bottom: .25rem
+}
+
+.content ol {
+    margin-bottom: 1.25rem
+}
+
+.content li {
+    line-height: 2.2
+}
+
+.content li::marker {
+    color: var(--color-primary)
+}
+
+.content li ul {
+    padding: 0 15px 0 0
+}
+
+.content .table-wrapper {
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 1.25rem
+}
+
+.content table {
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%
+}
+
+.content tr:nth-last-of-type(2n) {
+    background: #101113
+}
+
+.content tr:nth-last-of-type(odd) {
+    background-color: #1e1e1e
+}
+
+.content td {
+    border: 1px solid !important;
+    padding: .5rem
+}
+
+.content td p {
+    font-size: 1rem;
+    line-height: 1.88;
+    text-align: start
+}
+
+.content .w-200 {
+    width: 200px
+}
+
+.accordion-course {
+    background: #161719;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: .375rem
+}
+
+.accordion-course label {
+    width: 100%
+}
+
+.accordion-course__text {
+    color: #fff;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    gap: 7px
+}
+
+.accordion-course__item {
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: height .4s
+}
+
+.accordion-course__item div {
+    padding: 1rem 1.25rem
+}
+
+.accordion-course__part {
+    margin-bottom: .75rem;
+    background: #101113 !important;
+    padding: 7px 15px;
+    border-radius: .375rem !important
+}
+
+.accordion-course__part-name {
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 25px - .5rem);
+    display: inline-block;
+    font-size: 14px
+}
+
+#touch {
+    position: absolute;
+    opacity: 0;
+    height: 0
+}
+
+.accordion-course__icon {
+    height: 19px;
+    width: 19px;
+    text-align: center;
+    transition: rotate .1s ease-in-out
+}
+
+.accordion-course__icon.active {
+    rotate: 45deg;
+    transition: rotate .1s ease-in-out
+}
+
+.more-information-teacher {
+    padding-bottom: 11px;
+    margin-bottom: 11px;
+    border-bottom: 2px dashed rgba(187, 188, 190, .25)
+}
+
+.latest-post {
+    padding: 5px 0 10px
+}
+
+.latest-post:not(.latest-post:last-of-type) {
+    border-bottom: 2px dashed rgba(187, 188, 190, .25);
+    margin-bottom: 5px
+}
+
+.latest-post:last-of-type {
+    padding-bottom: 0
+}
+
+.latest-post-link,
+.latest-post-link:hover {
+    transition: color .3s
+}
+
+.toast {
+    --bs-toast-bg: #101113;
+    --bs-toast-header-bg: #101113
+}
+
+.toast-header {
+    border-bottom: 2px dashed #1e1e1e
+}
+
+.toast .btn-close {
+    filter: invert(1);
+    box-shadow: unset !important
+}
+
+.card-header {
+    padding: 11px;
+    border-radius: 1rem 1rem 0 0 !important;
+    background: #151618 !important;
+    border: unset !important
+}
+
+.comment-space {
+    border-top: 1px dashed rgba(187, 188, 190, .25);
+    margin: 1rem 0
+}

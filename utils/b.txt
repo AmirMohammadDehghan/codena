@@ -1,0 +1,92 @@
+/academycodena/admin/home/course/2/change/
+2024-08-10 08:21:45 | Traceback (most recent call last):
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 135, in handle
+2024-08-10 08:21:45 |     self.handle_request(listener, req, client, addr)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 178, in handle_request
+2024-08-10 08:21:45 |     respiter = self.wsgi(environ, resp.start_response)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/wsgi.py", line 124, in __call__
+2024-08-10 08:21:45 |     response = self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 140, in get_response
+2024-08-10 08:21:45 |     response = self._middleware_chain(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django_otp/middleware.py", line 35, in __call__
+2024-08-10 08:21:45 |     return self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 134, in __call__
+2024-08-10 08:21:45 |     response = response or self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django_auto_logout/middleware.py", line 46, in middleware
+2024-08-10 08:21:45 |     return get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/src/app/utils/middleware.py", line 13, in __call__
+2024-08-10 08:21:45 |     response = self.get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+2024-08-10 08:21:45 |     response = get_response(request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+2024-08-10 08:21:45 |     response = response.render()
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+2024-08-10 08:21:45 |     self.content = self.rendered_content
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+2024-08-10 08:21:45 |     return template.render(context, self._request)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+2024-08-10 08:21:45 |     return self.template.render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+2024-08-10 08:21:45 |     return self._render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+2024-08-10 08:21:45 |     return self.nodelist.render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+2024-08-10 08:21:45 |     return SafeString("".join([node.render_annotated(context) for node in self]))
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+2024-08-10 08:21:45 |     return SafeString("".join([node.render_annotated(context) for node in self]))
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+2024-08-10 08:21:45 |     return self.render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+2024-08-10 08:21:45 |     return compiled_parent._render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+2024-08-10 08:21:45 |     return self.nodelist.render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+2024-08-10 08:21:45 |     return SafeString("".join([node.render_annotated(context) for node in self]))
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+2024-08-10 08:21:45 |     return SafeString("".join([node.render_annotated(context) for node in self]))
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+2024-08-10 08:21:45 |     return self.render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+2024-08-10 08:21:45 |     return compiled_parent._render(context)
+2024-08-10 08:21:45 |   File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 167, in _render
+2024-08-10 08:22:38 | /usr/src/app/home/views.py:211: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'home.models.Course_Comment'> QuerySet.
+2024-08-10 08:22:38 | /usr/src/app/home/views.py:211: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'home.models.Course_Comment'> QuerySet.
+2024-08-10 08:22:38 |   paginator = Paginator(comments, 10)

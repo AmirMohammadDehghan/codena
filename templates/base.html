@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    {% block course_css %}
+    {% endblock course_css %}
+    {% include 'includes/header_links.html' %}
+
+    {% block css %}{% endblock css %}
+
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+</head>
+
+<body>
+<div class="light"></div>
+
+
+<div class="install-app install-app d-lg-none d-block">
+    <div class="container h-100 d-flex align-items-center gap-2">
+        <div>
+            <button class="btn btn-natural" id="hideInstallApp">
+                <svg width="30px" height="30px" viewBox="0 0 1024 1024">
+                    <path id="closeNavIcon"
+                          d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="not-support h-100 d-flex align-items-center justify-content-center">
+            <p class="mb-0 text-light">
+                برای نصب اپلیکیشن می توانید از سه نقطه ی بالای مرورگر روی add to home screen کلید نمایید.
+            </p>
+        </div>
+        <div class="support flex-grow-1 d-none d-flex align-items-center justify-content-between h-100">
+            <h3 class="fm-morabba text-light fw-bold mb-0">اپلیکیشن کدنا</h3>
+            <button class="btn btn-secondary shadow btn-lg" id="installPwaBtn">
+                نصب
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<header class="shadow-sm">
+    {% include "includes/base_header.html" %}
+</header>
+
+<div class="mobile-menu d-block d-lg-none position-fixed bottom-0 start-0 w-100">
+    <ul class="mobile-menu__list d-flex align-items-center justify-content-between gap-2 list-unstyled mb-0">
+        <li class="mobile-menu__item flex-grow-1">
+            <a class="mobile-menu__link d-flex flex-column align-items-center gap-2 w-100 h-100 py-2 px-3 text-center link-underline link-underline-opacity-0 text-light"
+               href="{% url 'home:index' %}">
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274"
+                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M15 18H9" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>خانه</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item flex-grow-1">
+            <a class="mobile-menu__link d-flex flex-column align-items-center gap-2 w-100 h-100 py-2 px-3 text-center link-underline link-underline-opacity-0 text-light"
+               href="{% url 'home:CourseListView' %}">
+                <svg width="25" height="25" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_33_9)">
+                        <path
+                                d="M14.578 5.92604C14.74 5.00135 14.0284 4.1543 13.0897 4.1543H5.34804C4.40927 4.1543 3.69773 5.00135 3.85975 5.92604"
+                                stroke="white" stroke-width="1.5"></path>
+                        <path
+                                d="M13.1168 4.15431C13.1369 3.9707 13.147 3.87887 13.1471 3.80304C13.1488 3.0776 12.6023 2.46807 11.881 2.39066C11.8056 2.38257 11.7132 2.38257 11.5285 2.38257H6.9094C6.72469 2.38257 6.63232 2.38257 6.55692 2.39066C5.83562 2.46807 5.28919 3.0776 5.29077 3.80304C5.29094 3.87887 5.30099 3.97068 5.3211 4.15431"
+                                stroke="white" stroke-width="1.5"></path>
+                        <path
+                                d="M15.7344 12.8664C15.4865 14.6246 15.3626 15.5037 14.7268 16.0302C14.091 16.5566 13.1531 16.5566 11.2775 16.5566H7.16053C5.28493 16.5566 4.34713 16.5566 3.7113 16.0302C3.07546 15.5037 2.95152 14.6246 2.70363 12.8664L2.40387 10.7403C2.08777 8.49829 1.92973 7.37731 2.60146 6.65173C3.2732 5.92615 4.46906 5.92615 6.86077 5.92615H11.5773C13.969 5.92615 15.1649 5.92615 15.8366 6.65173C16.3673 7.22496 16.3801 8.045 16.2062 9.46963"
+                                stroke="white" stroke-width="1.5" stroke-linecap="round"></path>
+                        <path
+                                d="M11.0484 10.6147C11.4442 10.8601 11.4442 11.4951 11.0484 11.7405L8.659 13.2217C8.27439 13.4601 7.80176 13.1498 7.80176 12.6589V9.6963C7.80176 9.20539 8.27439 8.89505 8.659 9.13346L11.0484 10.6147Z"
+                                stroke="white" stroke-width="1.5"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_33_9">
+                            <rect width="17.0087" height="17.0087" fill="white"
+                                  transform="translate(0.714844 0.96521)"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <span>آموزش ها</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item flex-grow-1">
+            <a class="mobile-menu__link d-flex flex-column align-items-center gap-2 w-100 h-100 py-2 px-3 text-center link-underline link-underline-opacity-0 text-light"
+               href="" data-bs-toggle="modal" data-bs-target="#authModal" aria-label="حساب کاربری">
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                            stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#fff"
+                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>حساب کاربری</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<!-- bg pattern -->
+<div class="bg-pattern"></div>
+<!-- bg pattern -->
+
+<!-- Modal search -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="authModalLabel">جست و جو</h1>
+                <button type="button" class="btn-close text-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <!-- start number input div -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="searchInput" style="margin-left: 0px;">جست و جو</label>
+                        <input type="search" id="searchInput" class="form-control">
+                    </div><!-- end number input div -->
+
+                </form>
+                <ul class="list-group list-group-flush rounded-4" id="searchList">
+                    {% for search in global_search %}
+
+                        <li class="list-group-item">
+                            <a href="{{ search.link }}"
+                               class="link-underline link-underline-opacity-0">{{ search.name }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% for post in global_post %}
+
+                        <li class="list-group-item">
+                            <a href="{% url 'blog:detail_page' post.id post.slug %}"
+                               class="link-underline link-underline-opacity-0">{{ post.title }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% for podcast in global_podcast %}
+
+                        <li class="list-group-item">
+                            <a href="{% url 'blog:podcast_detail' podcast.id podcast.slug %}"
+                               class="link-underline link-underline-opacity-0">{{ podcast.title }}</a>
+                        </li>
+                    {% endfor %}
+
+
+                    {% for course in global_course %}
+
+                        <li class="list-group-item">
+                            <a href="{% url 'home:course_detail' course.id course.slug %}"
+                               class="link-underline link-underline-opacity-0">{{ course.name }}</a>
+                        </li>
+                    {% endfor %}
+
+
+                    <li class="list-group-item">
+                        <a href="" class="link-underline link-underline-opacity-0">لینوکس سیاه</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="" class="link-underline link-underline-opacity-0">اسکرچ</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="" class="link-underline link-underline-opacity-0">شبکه با گرایش امنیت</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal search -->
+
+<!-- Modal auth -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="authModalLabel">حساب کاربری</h1>
+                <button type="button" class="btn-close text-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if request.user.is_authenticated %}
+                    <div class="d-flex align-items-center gap-2 my-3">
+                        <a href="{% url 'dashboard:userarea' %}" class="btn btn-primary w-50">
+                            اطلاعات حساب
+                        </a>
+                        <a href="{% url 'account:logout' %}" class="btn btn-danger w-50">
+                            خروج
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="d-flex align-items-center gap-2 my-3">
+                        <a href="{% url 'account:register' %}" class="btn btn-primary w-50">
+                            ثبت نام
+                        </a>
+                        <a href="{% url 'account:login' %}" class="btn btn-success w-50">
+                            ورود
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal auth -->
+
+
+
+{% block content %}
+
+{% endblock %}
+
+
+
+{% include 'includes/base_footer.html' %}
+
+</body>
+
+{# scripts #}
+
+{% include 'includes/footer_links.html' %}
+{% block course_js %}
+{% endblock course_js %}
+
+{% block script %}{% endblock script %}
+</html>

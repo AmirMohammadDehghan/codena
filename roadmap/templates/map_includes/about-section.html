@@ -1,0 +1,30 @@
+{% load static %}
+
+<section class="section-height-fit mt-5 about-road-map">
+        <div class="container position-relative" id="descriptionsContianer">
+            <h4 class="text-light fw-bold fm-morabba d-flex align-items-center mb-0 gap-3">
+                <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                    <g data-name="road tracking">
+                        <path fill="#fff"
+                            d="m8 56 2.11-7L8 42l13 7-13 7zM47.5 50H24a1 1 0 0 1 0-2h23.5a4.5 4.5 0 0 0 0-9h-31a6.5 6.5 0 1 1 0-13H40a1 1 0 0 1 0 2H16.5a4.5 4.5 0 0 0 0 9h31a6.5 6.5 0 0 1 0 13zM43 25a1 1 0 0 1-1-1V8a1 1 0 0 1 2 0v16a1 1 0 0 1-1 1z">
+                        </path>
+                        <path fill="#fff" d="M43 16h10l-3-3.96L53 8H43v8z"></path>
+                        <circle cx="43" fill="#fff" cy="27" r="3"></circle>
+                    </g>
+                </svg>
+                درباره نقشه راه
+                </h3>
+                <p class="text-secondary mb-0 text-justify mt-1">
+                   {{ map.description | safe }}
+                </p>
+                <div class="descriptionsShadow start-0 end-0 bottom-0 position-absolute"></div>
+        </div>
+        <button class="btn mx-auto d-flex align-items-center justify-content-center gap-2 mt-1" id="showMore">
+            نمایش بیشتر
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" style="rotate: 180deg;">
+                <path
+                    d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                    stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+    </section>

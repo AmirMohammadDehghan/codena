@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="hero-section mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card teacher-box">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center py-3">
+                                <img src="{{ memberdata.user.user_image.url }}" alt="Admin" class="rounded-circle" width="150"
+                                    height="150">
+                                <div class="mt-3">
+                                    <h4 class="fm-morabba">{{ memberdata.user.username }}</h4>
+                                    <p class="mb-1">{{ memberdata.small_description }}</p>
+{#                                    <p class="font-size-sm">ایران کدنا</p>#}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="d-flex align-items-center mb-3 text-light fw-bold fm-morabba">راه های ارتباطی
+                            </h5>
+                            {% for contact_way in contact_ways %}
+                            <h6 class="mb-4 d-flex align-items-center justify-content-between">
+                                <span>
+                                    {{ contact_way.name_way }}:
+                                </span>
+                                <span>{{ contact_way.way }}</span>
+                            </h6>
+                            {% endfor %}
+
+
+
+
+                        </div>
+                    </div>
+                {% if memberdata.user.is_teacher %}
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="d-flex align-items-center text-light fw-bold fm-morabba">دوره ها</h5>
+                            <div class="row justify-content-center">
+                                {% for cours in courses %}
+
+
+
+                                <div class="col-md-4 col-sm-6 py-3">
+                                    <div class="card h-100">
+                                        <img src="{{ cours.course_image.url }}" class="card-img-top rounded-4"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h2 class="card-title text-light fs-4 fw-bold">{{ cours.name }}</h2>
+                                            <p class="card-text text-secondary text-justify my-3">
+                                               {{ cours.snippet }}
+                                            </p>
+                                            <div
+                                                class="d-flex justify-content-between align-items-center text-light mt-5">
+                                                <span>{{ cours.creat_at }}</span>
+                                                <span>{{ cours.original_price }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer border-light text-center">
+                                            <a href="{% url 'home:course_detail' cours.id cours.slug %}"
+                                                class="link-underline link-underline-opacity-0 text-light d-block align-items-center mt-2">
+                                                <span class="me-2">
+                                                    مشاهده اطلاعات دوره
+                                                </span>
+                                                <svg height="25" viewBox="0 0 7 12">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-652.000000, -2464.000000)">
+                                                            <g transform="translate(100.000000, 2404.000000)">
+                                                                <g transform="translate(544.000000, 54.000000)">
+                                                                    <g>
+                                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                                        <path
+                                                                            d="M14.71,15.88 L10.83,12 L14.71,8.12 C15.1,7.73 15.1,7.1 14.71,6.71 C14.32,6.32 13.69,6.32 13.3,6.71 L8.71,11.3 C8.32,11.69 8.32,12.32 8.71,12.71 L13.3,17.3 C13.69,17.69 14.32,17.69 14.71,17.3 C15.09,16.91 15.1,16.27 14.71,15.88 Z"
+                                                                            id="arrowLeftIcon"></path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                               {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %} 
+
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

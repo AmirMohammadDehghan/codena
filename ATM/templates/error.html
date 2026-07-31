@@ -1,0 +1,59 @@
+{% extends './base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+پیگیری خرید
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+  </head>
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+
+<script src=" {% static 'assets/js/validationForm.js' %} "></script>
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+
+
+{% block content %}
+  <style>
+        .body-me {
+            background: linear-gradient(180deg, #101113, rgb(20 109 165 / 90%), #101113);
+            min-height: 100vh;
+        }
+
+        .body-me.light-mode {
+            background: linear-gradient(180deg, #ffffff -30%, rgb(255 139 0 / 90%) 80%, #ffffff 120%);
+        }
+    </style>
+</head>
+
+<div   class="d-flex body-me align-items-center justify-content-center">
+
+    <!-- start main -->
+    <main class="p-4 rounded d-flex flex-column justify-content-center mw-100 border"
+        style="box-shadow:4px 4px 16px rgba(0, 0, 0, 0.5), -4px -4px 16px rgba(255, 255, 255, 0.05)">
+
+        <!-- start logo container -->
+        <div class="text-center">
+            <img src="{% static 'assets/img/logo.png' %}  " width="150px" alt="logo" class="mb-4">
+        </div><!-- end logo container -->
+
+        <h2 class="text-danger fw-bold text-center fm-morabba">
+            پرداخت ناموفق
+        </h2>
+        <p class="text-center text-secondary fs-6 mt-3">
+            نکته! در صورت کثر شدن وجه از حساب شما
+            وجه تا 72 ساعت به حساب شما بازگشت داده می شود
+            درصورت بازنگشتن وجه به بانک مراجعه فرمایید!
+        </p>
+
+    </main><!-- end main -->
+
+</div>
+{% endblock content %}

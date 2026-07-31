@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="{% static 'assets/images/logo.png' %}" type="image/x-icon">
+
+   <title>
+    {% block title %}
+    {% endblock title %}
+   </title>
+   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
+   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /> -->
+   <!-- <link rel="stylesheet" href="/css/bootstrap-rtl.css">  -->
+   <link href="{% static 'assets/base/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="{% static 'assets/base/css/bootstrap-icons.css' %}">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">  -->
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   
+   {% comment %} home {% endcomment %}
+   <link rel="stylesheet" href="{% static 'assets/base/css/base_style.css' %}">
+   
+   {% block css %}{% endblock css %}
+
+
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+
+      <a href="home.html" class="logo"><img src="{% static 'assets/images/logo_title.png' %}" alt=""  width="82px"></a>
+
+      <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="جستجوی دوره..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+      {% if request.user.is_authenticated %}
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+         <div class=" fas  fa-basket-shopping"></div>
+      </div>
+      {% else %}
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="user-btn" class="fas fa-user"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+     </div>
+      {% endif %}
+
+
+        {% if request.user.is_authenticated %}
+        <div class="profile">
+         <img src="{{ request.user.user_image.url }}" class="image" alt="">
+         <h3 class="name"> {{ request.user.username }} </h3>
+         <p class="role"> {{ request.user.phone_number }} </p>
+         <a href="profile.html" class="mybtn">ناحیه کاربری</a>
+        <a href="{% url 'account:logout' %}" class="mybtn"> خروج </a>
+
+         
+      </div>
+      {% else %}
+      <div class="profile">
+        <img src="{% static 'assets/images/user_pic.png' %}" class="image" alt="">
+        
+        <h3 class="name"> ورود به حساب </h3>
+        <p class="role"> یا </p>
+        <h3 class="name"> ثبت نام </h3>
+        <div class="flex-btn">
+            <a href="{%url 'account:login'%}" class="option-btn">ورود</a>
+            <a href="{%url 'account:register'%}" class="option-btn">ثبت نام</a>
+         </div>
+     </div>
+        {% endif %}
+      
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   {% if request.user.is_authenticated %}
+   <div class="profile">
+      <img src="{{ request.user.user_image.url}}" class="image" alt="">
+      <h3 class="name"> {{ request.user.username }} </h3>
+      <p class="role">
+        {% if request.user.phone_number_verified %}
+        <i class="fa-regular fa-circle-check" style="color: #2c9d15;"></i>
+         {% else %}
+         <i class="fa-regular fa-circle-xmark" style="color: #e30224;"></i>
+          {% endif %}
+         
+        {{ request.user.phone_number }}
+        </p>
+       
+            <a href="#" class="mybtn"> ناحیه کاربری </a>
+            <a href="{%url 'account:logout'%}" class="mybtn"> خروج </a>
+         
+   </div>
+
+   {% else %}
+   <div class="profile">
+    <img src="{% static 'assets/images/user_pic.png' %}" class="image" alt="">
+    <h3 class="name"> به حساب خود وارد شوید </h3>
+    <p class="role"> یا </p>
+    <h3 class="name"> با ثبت نام به ما بپیوندید </h3>
+
+       <a href="{%url 'account:login'%}" class="mybtn">ورود</a>
+       <a href="{%url 'account:register'%}" class="mybtn">ثبت نام</a>
+  
+ </div>
+   {% endif %}
+
+   <nav class="mynavbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>خانه</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>درباره ما</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>دوره ها</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>اساتید</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>ارتباط با ما</span></a>
+   </nav>
+
+</div>
+
+{% block content %}{% endblock content %}
+
+
+<footer class="footer" id="myFooter">
+    <div class="waves">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+      <div class="wave" id="wave4"></div>
+    </div>
+    <div class="content">
+    </div>
+        
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2 class="logo"><a href="#"> <img src="{% static 'assets/images/logo.png' %}" width="50%"></a></h2>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>دسترسی سریع</h5>
+                        <ul>
+                            <li><a href="#">صفحه نخست</a></li>
+                            <li><a href="#">ورود به سایت</a></li>
+                            <li><a href="#">ثبت نام در سایت</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>آکادمی کدنا</h5>
+                        <ul>
+                            <li><a href="#">درباره شرکت</a></li>
+                            <li><a href="#">تماس با ما</a></li>
+                            <li><a href="#">سوالات متداول</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>پشتیبانی</h5>
+                        <ul>
+                            <li><a href="#">ارسال تیکت</a></li>
+                            <li><a href="#">مرکز آموزش</a></li>
+                            <li><a href="https://amirmohammaddehghan.github.io/resume" target="_blank">توسعه دهنده</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="social-networks">
+                         
+                            <a href="#" class="instagram"> <i class="fa-brands fa-instagram fa-spin fa-spin-reverse"></i> </a>
+                            <a href="#" class="github"><i class="fa-brands fa-github fa-fade"></i></i></a>
+                            <a href="#" class="eitaa"><img class="fa fa-bounce" src="{% static 'assets/images/eitaa.png' %}" alt="" width="32px" ></i></a>
+                        </div>
+                        <button type="button" class="btn btn-default">ما را دنبال کنید</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p class="fw-bold fs-4">© 2023  کلیه حقوق این سورس متعلق به <a href="/" target="_blank">  آکادمی کدنا </a> می باشد.</p>
+            </div>
+        </footer>
+        <script src="{% static 'assets/base/js/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     
+        <script src="{% static 'assets/jquery/jquery-3.1.1.min.js' %}"></script>
+        <!-- <script src="js/bootstrap.min.js"></script> -->
+  <script type="module" src="{% static 'assets/base/js/ionicons.esm.js' %}"></script>
+  <script nomodule src="{% static 'assets/base/js/ionicons.js' %}"></script>
+ 
+ 
+ <!-- custom js file link  -->
+        <script src="{% static 'assets/base/js/base_script.js' %}"></script>
+
+    {% block script %}{% endblock script %}
+    <script src="//code.tidio.co/ydavvwv6hb11sui9dzkkxczqypx3si23.js" async></script>
+ </body>
+ </html>

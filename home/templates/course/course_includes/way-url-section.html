@@ -1,0 +1,22 @@
+{% load static %}
+
+    <section class="section-height-fit pt-3 mb-3" style="background-color: transparent;">
+        <div class="container">
+            <div class="breadcrumb">
+                <div class="breadcrumb__item">
+                    <a href="{% url 'home:index' %}" class="link-light link-underline link-underline-opacity-0">
+                        خانه
+                    </a>
+                </div>
+                <div class="breadcrumb__item">
+                    <a href="{% url 'home:CourseListView' %}" class="link-light link-underline link-underline-opacity-0">
+                        دوره ها
+                    </a>
+                </div>
+                <div class="breadcrumb__item">
+                    <a href="" class="link-light link-underline link-underline-opacity-0">
+                        {{ course_detail.name }} </a>
+                </div>
+            </div>
+        </div>
+    </section>

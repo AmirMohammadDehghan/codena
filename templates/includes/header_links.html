@@ -1,0 +1,66 @@
+ {% load static %}
+{% load i18n %}
+
+<script>
+    !function (t, e, n) {
+        t.yektanetAnalyticsObject = n, t[n] = t[n] || function () {
+            t[n].q.push(arguments)
+        }, t[n].q = t[n].q || [];
+        var a = new Date, r = a.getFullYear().toString() + "0" + a.getMonth() + "0" + a.getDate() + "0" + a.getHours(),
+            c = e.getElementsByTagName("script")[0], s = e.createElement("script");
+        s.id = "ua-script-uzl2dxBj"; s.dataset.analyticsobject = n;
+        s.async = 1; s.type = "text/javascript";
+        s.src = "https://cdn.yektanet.com/rg_woebegone/scripts_v3/uzl2dxBj/rg.complete.js?v=" + r, c.parentNode.insertBefore(s, c)
+    }(window, document, "yektanet");
+</script>
+       <!-- meta tags -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- title and favicon -->
+
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.rtl.min.css"/>
+        <!-- Default theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css"/>
+        <!-- Semantic UI theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
+        <!-- Bootstrap theme -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
+
+        <link rel="shortcut icon" href="https://codena.org/favicon.ico" type="image/x-icon">
+
+<!-- bootstrap css -->
+
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.rtl.min.css' %}">
+{% block course_css %}
+{% endblock course_css %}
+<!-- base css -->
+<link rel="stylesheet" href="{% static 'assets/css/base.css' %}">
+
+    <!-- stars animation -->
+
+   <link rel="stylesheet" href="{% static 'assets/css/stars-anim.css' %}">
+
+<!-- coustom style for diffrent pages -->
+
+ <!-- pwa -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00b1f1">
+    <link rel="apple-touch-icon" sizes="16x16" href="icons/16x16.png">
+    <link rel="apple-touch-icon" sizes="32x32" href="icons/32x32.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="icons/96x96.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/120x120.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="icons/128x128.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/180x180.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/192x192.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="icons/384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/512x512.png">
+    <link rel="apple-touch-startup-image" href="icons/192x192.png">
+    <meta name="apple-mobile-web-app-title" content="کدنا">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#00b1f1">

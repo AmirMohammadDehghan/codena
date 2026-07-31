@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    آکادمی کد نویسی کدنا
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+    <!-- swiper css -->
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-custom.css' %}">
+    <!-- video css -->
+    <link rel="stylesheet" href="{% static 'assets/css/video1_1.css' %}">
+    <!-- index css -->
+    <link rel="stylesheet" href="{% static 'assets/css/road-map.css' %}">
+     <link rel="stylesheet" href="{% static 'assets/css/timeline.css' %}">
+    <style>
+    .discount-card {
+        position: relative;
+        box-shadow: 0px 20px 35px -16px rgba(255, 16, 39, 0.57);
+    }
+
+    .special-discount {
+        position: absolute;
+        top: -15px;
+        transform: translateX(-50%);
+        left: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, .08) !important;
+        background: rgb(255 255 255 / 2%) !important;
+    }
+
+    .discount-card .card-body {
+        padding: 10px 12px;
+    }
+
+    .discount-card::after {
+        position: absolute;
+        content: "";
+        top: 15px;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        transform: scale(0.9) translateZ(0);
+        filter: blur(15px);
+        background: linear-gradient(to left, #ff577038, #e4428d47, #c42da840, #9e16c369, #6501de5e, #9e16c361, #c42da842, #e4428d6e, #ff57709c);
+        background-size: 200% 200%;
+        -webkit-animation: animateGlow 1.25s linear infinite;
+        animation: animateGlow 1.25s linear infinite;
+    }
+</style>
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+    <!-- swiper js -->
+    <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/slider.js' %}"></script>
+
+
+    <script src="{% static 'assets/js/video.js' %}"></script>
+
+    <script>
+    createVideoPlayer("#roadeMapVideo")
+</script>
+<script src="{% static 'assets/js/roadmap.js' %}"></script>
+
+    <script>
+    const timelineContents = document.querySelectorAll(".timeline_content");
+
+    function onScroll() {
+        for (const timelineContent of timelineContents) {
+            const timelineItemTop = timelineContent.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (timelineItemTop < windowHeight) {
+                timelineContent.style.opacity = 1;
+            } else {
+                timelineContent.style.opacity = 0;
+            }
+        }
+    }
+
+    window.addEventListener("scroll", onScroll);
+</script>
+
+<script>
+    var content = document.getElementById("content");
+    var showMoreBtn = document.getElementById("showMore");
+
+    showMoreBtn.onclick = function () {
+        if (content.className == "open") {
+            //shrink the box
+            content.className = "";
+            showMoreBtn.innerHTML = "نمایش بیشتر" + `
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" style="rotate: 180deg;">
+                    <path
+                        d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            `;
+            document.body.scrollIntoView({
+                behavior: "smooth",
+            });
+        } else {
+            //expand the box
+            content.className = "open";
+            showMoreBtn.innerHTML = "نمایش کمتر" + `
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            `;
+        }
+    };
+</script>
+
+{% endblock script %}
+
+
+{% block content %}
+
+
+{# hero section #}
+    {% include './map_includes/hero-section.html' %}
+
+{# intro section   #}
+
+
+{# courses section #}
+    {% include './map_includes/courses-section.html' %}
+
+{# courses section   #}
+
+
+{# courses section #}
+    {% include './map_includes/articles-section.html' %}
+
+{# courses section   #}
+
+{% endblock content %}

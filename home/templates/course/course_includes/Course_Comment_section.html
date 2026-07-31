@@ -1,0 +1,206 @@
+{% load static %}
+
+<section>
+    <div class="container" id="commentForm">
+        <h2 class="fs-1 fw-bold text-light mt-3 pb-0 fm-morabba">نظرات دوره :</h2>
+
+        <form class="pt-3 pb-0" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="massage" id="comment_replay_text" class="form-label">پیغام شما</label>
+                {{ form.text }}
+            </div>
+            <input type="hidden" name="parent_id" id="parent_id" value="">
+            <button type="submit"
+                    class="btn btn-primary btn-outline-light btn-lg">ارسال
+            </button>
+        </form>
+        {% if comments_page != none %}
+            {% for comment in comments_page %}
+                {% if comment.author == request.user %}
+                    <div class="pt-3 pb-0 my-3">
+                        <div class="card w-75 ms-auto message-box">
+
+                                <div class="card-header d-flex align-items-center gap-2 mb-2">
+                                    <img src=" {% static 'assets/img/loading.webp' %}"
+                                            {% if comment.author.user_image %}
+                                         data-src="{{ comment.author.user_image.url }}"
+                                            {% else %}
+                                         data-src="{% static 'assets/img/user_pic.png' %}"
+                                            {% endif %}
+
+                                         class="rounded-circle lazy" width="40" height="40" alt="">
+                                    <h5 class="card-title mb-0">شما گفتید :</h5>
+                                </div><div class="card-body">
+                                <p class="card-text">
+                                    {{ comment.text }}
+                                </p>
+
+
+                                <a href="#commentForm" class="reply-link btn" data-comment-id="{{ comment.id }}"
+                                   data-user="{{ comment.author.username }}">
+                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="#fff">
+                                        <path
+                                                d="M6.222 4.733V1L0 7.533l6.222 6.534V10.24c4.445 0 7.556 1.493 9.778 4.76-.889-4.667-3.556-9.333-9.778-10.267z">
+                                        </path>
+                                    </svg>
+                                </a>
+
+
+                                <button data-num-replay="1" data-mode="hide" data-kind="replayCollapseBtn"
+                                        class="btn d-inline-flex align-items-center gap-1"
+                                        data-bs-toggle="collapse" data-bs-target="#replayCollapse{{ comment.id }}"
+                                        aria-expanded="false" aria-controls="replayCollapse{{ comment.id }}">
+                                    نمایش
+                                    <strong>{{ comment.replies.count }}</strong>
+                                    پاسخ
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                                         style="rotate: 180deg;">
+                                        <path
+                                                d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                                                stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                    </svg>
+                                </button>
+                                <div class="collapse" id="replayCollapse{{ comment.id }}">
+                                    <hr>
+                                    {% for reply in comment.replies.all %}
+
+                                        <div class="ms-3 ps-3 border-start border-primary">
+                                            <h6 class="card-title">{{ reply.author.username }} در جواب گفت :</h6>
+                                            <p class="card-text text-justify">
+                                                {{ reply.text }}
+                                            </p>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="pt-3 pb-0 my-3">
+                        <div class="card w-75 message-box">
+
+                                <div class="card-header d-flex align-items-center gap-2 mb-2">
+                                    <img src="./assets/img/loading.webp"
+                                         {% if comment.author.user_image %}
+                                             data-src="{{ comment.author.user_image.url }}"
+                                         {% else %}
+                                         {% static 'assets/img/user_pic.png' %}
+                                         {% endif %}
+                                         data-src="{{ comment.author.user_image.url }}"
+                                         class="rounded-circle lazy" width="40" height="40" alt="">
+                                    <h5 class="card-title mb-0">{{ comment.author.username }} گفت :</h5>
+                                </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{ comment.text }}
+                                </p>
+                                <a href="#commentForm" class="reply-link btn" data-comment-id="{{ comment.id }}"
+                                   data-user="{{ comment.author.username }}">
+                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="#fff">
+                                        <path
+                                                d="M6.222 4.733V1L0 7.533l6.222 6.534V10.24c4.445 0 7.556 1.493 9.778 4.76-.889-4.667-3.556-9.333-9.778-10.267z">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <button data-num-replay="1" data-mode="hide" data-kind="replayCollapseBtn"
+                                        class="btn d-inline-flex align-items-center gap-1"
+                                        data-bs-toggle="collapse" data-bs-target="#replayCollapse{{ comment.id }}"
+                                        aria-expanded="false" aria-controls="replayCollapse{{ comment.id }}">
+                                    نمایش
+                                    <strong>{{ comment.replies.count }}</strong>
+                                    پاسخ
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                                         style="rotate: 180deg;">
+                                        <path
+                                                d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                                                stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                    </svg>
+                                </button>
+                                <div class="collapse" id="replayCollapse{{ comment.id }}">
+                                    <hr>
+                                    {% for reply in comment.replies.all %}
+                                        <div class="ms-3 ps-3 border-start border-primary">
+                                            <h6 class="card-title">{{ reply.author.username }} در جواب گفت :</h6>
+                                            <p class="card-text text-justify">
+                                                {{ reply.text }}
+                                            </p>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+            {% if comments_page.has_other_pages %}
+                <!-- Pagination links -->
+                <div class="pagination">
+            <span class="step-links">
+                {% if comments_page.has_previous %}
+                    <a class="btn" href="?page=1">&laquo; اولین</a>
+                    <a class="btn" href="?page={{ comments_page.previous_page_number }}">قبلی</a>
+                {% endif %}
+
+                <span class="current">
+                    صفحه  {{ comments_page.number }} از {{ comments_page.paginator.num_pages }} صفحه.
+                </span>
+
+                {% if comments_page.has_next %}
+                    <a class="btn" href="?page={{ comments_page.next_page_number }}">بعدی</a>
+                    <a class="btn" href="?page={{ comments_page.paginator.num_pages }}">آخرین &raquo;</a>
+                {% endif %}
+            </span>
+                </div>
+            {% endif %}
+        {% else %}
+            <p class="text-secondary lh-lg fs-5 mb-0 text-secondary text-justify pt-3 pb-0">
+                نظری وجود ندارد
+                اولین نفر باشید (:
+            </p>
+        {% endif %}
+
+
+    </div>
+</section>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const replyLinks = document.querySelectorAll('.reply-link');
+        replyLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const commentId = this.getAttribute('data-comment-id');
+                document.getElementById('parent_id').value = commentId;
+                document.getElementById('comment_replay_text').innerHTML = 'در حال پاسخ به ' + this.getAttribute('data-user') + ' هستی. '
+            });
+        });
+    });
+
+</script>
+
+<script>
+    // Attach event listener to the form
+    document.getElementById('cmtForm').addEventListener('submit', function (event) {
+        // Prevent the form from submitting
+        event.preventDefault();
+
+        // Example: Check if the form is valid (you can add your own validation logic)
+        var nameValue = document.getElementById('name').value.trim();
+        if (nameValue === '') {
+            alert('Please enter your name.');
+            return; // Exit the function early if validation fails
+        }
+
+        // If form is valid, show the alert
+        alert('Form submitted successfully!');
+
+        // You can add further actions here, like submitting via AJAX, redirecting, etc.
+    });
+</script>

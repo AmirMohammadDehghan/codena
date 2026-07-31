@@ -1,0 +1,21 @@
+{% if course_detail.status == True %}
+
+                                        {{ course_detail.original_price }}
+
+                                                رایگان!
+
+                                    {% else %}
+                                        {% if course_detail.is_discount == True %}
+
+                                                    {{ course_detail.original_price }}
+                                                </span>
+
+                                                    {{ course_detail.discount_offer }}
+
+
+                                        {% else %}
+
+                                                {{ course_detail.original_price }}
+
+                                        {% endif %}
+                                    {% endif %}

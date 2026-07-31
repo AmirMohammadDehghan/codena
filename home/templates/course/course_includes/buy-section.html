@@ -1,0 +1,42 @@
+{% load static %}
+
+    <!-- Modal by -->
+    <div class="modal fade" id="byModal" tabindex="-1" aria-labelledby="byModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="byModalLabel">خرید دوره</h1>
+                    <button type="button" class="btn-close text-light" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+
+                    <div class="d-flex align-items-center gap-2 my-3 course_data">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ course_detail.id }}" class="cors_id">
+                        <button class="btn btn-success w-100 addToCartBtn">
+                            خرید کامل
+                        </button>
+                    </div>
+
+                     {% if course_detail.status == False %}
+                    <div class="d-flex align-items-center gap-2 my-3 faze_data">
+                    <input type="hidden"  class="faz_id" id="faz_id">
+                    {% for fazeitem in course_faze %}
+                        <button onclick="Faze_Id('{{ fazeitem.id }}')" class="btn w-25 flex-grow-1 addFazeToCartBtn">
+                            خرید {{ fazeitem.name }}
+                        </button>
+
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal by -->

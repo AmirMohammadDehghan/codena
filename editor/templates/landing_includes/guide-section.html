@@ -1,0 +1,203 @@
+{% load static %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="fs-2 text-light fw-bold fm-morabba">
+                        نحوه ی استفاده از کد ادیتور
+                    </h2>
+                    <p class="text-secondary fs-5 mt-4">
+                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                        چاپگرها
+                        و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
+                        و
+                        کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و
+                        آینده شناخت فراوان جامعه و متخصصان را می طلبد
+                    </p>
+                    <a href="python" class="btn">شروع کد نویسی!</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="video-container" id="codeEditorVideo">
+                        <video crossorigin="anonymous" poster="{% static 'assets/img/editor.jpg' %}"
+                            primary-src="{% static 'assets/video/intro.mp4' %}" src="{% static 'assets/video/intro.mp4' %}" class="video"
+                            id="videoCourse"></video>
+                        <div class="controllers">
+                            <div class="top-controllers">
+                                <div class="logo">
+                                    <a href="">
+                                        <img src="{% static 'assets/img/logo-footer.webp' %}" alt="">
+                                    </a>
+                                </div>
+                                <button class="control" id="screenshot">
+                                    <svg width="21px" height="21px" viewBox="0 0 20 20">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(-272.000000, -2770.000000)">
+                                                <g transform="translate(100.000000, 2626.000000)">
+                                                    <g transform="translate(170.000000, 142.000000)">
+                                                        <g>
+                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                            <path
+                                                                d="M13.81,2.86 C13.98,2.56 13.81,2.16 13.46,2.12 C10.84,1.75 8.16,2.4 6.02,3.98 C5.83,4.13 5.77,4.41 5.9,4.63 L8.91,9.85 C9.1,10.18 9.58,10.18 9.78,9.85 L13.81,2.86 Z M21.3,8.33 C20.32,5.86 18.38,3.87 15.95,2.83 C15.72,2.73 15.45,2.83 15.32,3.05 L12.31,8.26 C12.12,8.58 12.36,9 12.75,9 L20.83,9 C21.18,9 21.43,8.65 21.3,8.33 Z M21.37,10 L15.17,10 C14.79,10 14.54,10.42 14.74,10.75 L19,18.14 C19.17,18.44 19.6,18.49 19.82,18.22 C21.56,16.04 22.3,13.19 21.87,10.43 C21.84,10.18 21.62,10 21.37,10 Z M4.18,5.79 C2.45,7.98 1.7,10.81 2.13,13.58 C2.16,13.82 2.38,14 2.63,14 L8.83,14 C9.21,14 9.46,13.58 9.26,13.25 L5,5.87 C4.82,5.57 4.39,5.52 4.18,5.79 Z M2.7,15.67 C3.68,18.14 5.62,20.13 8.05,21.17 C8.28,21.27 8.55,21.17 8.68,20.95 L11.69,15.74 C11.88,15.41 11.64,14.99 11.26,14.99 L3.17,14.99 C2.82,15 2.57,15.35 2.7,15.67 Z M10.53,21.89 C13.15,22.26 15.83,21.61 17.97,20.03 C18.17,19.88 18.23,19.59 18.1,19.37 L15.09,14.15 C14.9,13.82 14.42,13.82 14.22,14.15 L10.18,21.14 C10.01,21.44 10.19,21.84 10.53,21.89 Z"
+                                                                fill="#fff"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
+                                <button class="control" id="grayVideoToggle">
+                                    <svg x="0px" y="0px" viewBox="0 0 32 32" width="21" height="21">
+                                        <style type="text/css">
+                                            .st0 {
+                                                fill: none;
+                                                stroke: #fff;
+                                                stroke-width: 2;
+                                                stroke-linecap: round;
+                                                stroke-linejoin: round;
+                                                stroke-miterlimit: 10;
+                                            }
+
+                                            .st1 {
+                                                fill: none;
+                                                stroke: #fff;
+                                                stroke-width: 2;
+                                                stroke-linejoin: round;
+                                                stroke-miterlimit: 10;
+                                            }
+                                        </style>
+                                        <path class="st0" d="M17,5c-0.27,0-0.54,0.02-0.8,0.04C19.05,6.55,21,9.55,21,13c0,4.97-4.03,9-9,9c-2.74,0-5.19-1.23-6.85-3.17
+                C6.04,24.59,11,29,17,29c6.63,0,12-5.37,12-12S23.63,5,17,5z" />
+                                        <g>
+                                            <path class="st0"
+                                                d="M11,9c-2.58,0.62-3.38,1.42-4,4c-0.62-2.58-1.42-3.38-4-4c2.58-0.62,3.38-1.42,4-4C7.62,7.58,8.42,8.38,11,9z" />
+                                        </g>
+                                        <line class="st0" x1="12" y1="14" x2="12" y2="16" />
+                                        <line class="st0" x1="11" y1="15" x2="13" y2="15" />
+                                    </svg>
+
+                                </button>
+                            </div>
+                            <div class="bottom-controllers">
+                                <div class="progress-video">
+                                    <div class="progress-hidden"></div>
+                                    <div id="progressMarker"></div>
+                                </div>
+                                <div class="bottom-controllers-right">
+                                    <button class="control" id="pictureInPicture">
+                                        <svg width="21px" height="21px" viewBox="0 0 22 18">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-237.000000, -333.000000)">
+                                                    <g transform="translate(100.000000, 100.000000)">
+                                                        <g transform="translate(136.000000, 230.000000)">
+                                                            <g>
+                                                                <polygon points="0 0 24 0 24 24 0 24">
+                                                                </polygon>
+                                                                <path
+                                                                    d="M19,11 L11,11 L11,17 L19,17 L19,11 Z M17,15 L13,15 L13,13 L17,13 L17,15 Z M21,3 L3,3 C1.9,3 1,3.88 1,4.98 L1,19 C1,20.1 1.9,21 3,21 L21,21 C22.1,21 23,20.1 23,19 L23,4.98 C23,3.88 22.1,3 21,3 Z M21,19.02 L3,19.02 L3,4.97 L21,4.97 L21,19.02 Z"
+                                                                    fill="#fff"></path>
+                                                                <polygon fill="#fff" points="13 13 17 13 17 15 13 15">
+                                                                </polygon>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <button class="control" id="setPlaybackRate">
+                                        1x
+                                    </button>
+                                </div>
+                                <div class="bottom-controllers-center">
+                                    <button class="control" id="plusSecond">
+                                        <svg viewBox="0 0 34 34" width="21" height="21">
+                                            <path
+                                                d="M18 23.667a2 2 0 01-1.333-.507 2 2 0 01-3.334-1.493V19a3.333 3.333 0 013.334-3.333h2.893a.667.667 0 01.667.666v5.334a2 2 0 01-2 2H18zm.893-2V17h-2.226a2 2 0 00-2 2v2.667a.667.667 0 001.333 0v-1.334a.667.667 0 011.333 0v1.334a.667.667 0 00.667.666h.227a.667.667 0 00.666-.666z"
+                                                fill="currentcolor" fill-rule="evenodd"></path>
+                                            <path
+                                                d="M7.2 11.187a11.319 11.319 0 018.133-4.147V4.373a1.334 1.334 0 012.134-1.066l5.333 4a1.333 1.333 0 010 2.133l-5.333 4a1.334 1.334 0 01-1.334.12 1.334 1.334 0 01-.733-1.187V9.707a8.653 8.653 0 00-6.133 3.16 8.773 8.773 0 00-1.734 7.346A8.587 8.587 0 0014.12 26.8a8.773 8.773 0 007.347-1.733 8.679 8.679 0 003.2-6.734 1.333 1.333 0 012.666 0A11.32 11.32 0 0116 29.667a11.334 11.334 0 01-8.8-18.48z"
+                                                fill="currentcolor" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="control" id="playPause">
+                                        <svg width="21px" height="21px" viewBox="0 0 11 14">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-753.000000, -955.000000)">
+                                                    <g transform="translate(100.000000, 852.000000)">
+                                                        <g transform="translate(646.000000, 98.000000)">
+                                                            <g>
+                                                                <rect x="0" y="0" width="24" height="24">
+                                                                </rect>
+                                                                <path
+                                                                    d="M7,6.82 L7,17.18 C7,17.97 7.87,18.45 8.54,18.02 L16.68,12.84 C17.3,12.45 17.3,11.55 16.68,11.15 L8.54,5.98 C7.87,5.55 7,6.03 7,6.82 Z"
+                                                                    fill="#fff"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <button class="control" id="minusSecond">
+                                        <svg viewBox="0 0 34 34" width="21" height="21">
+                                            <path
+                                                d="M18 23.667a2 2 0 01-1.333-.507 2 2 0 01-3.334-1.493V19a3.333 3.333 0 013.334-3.333h2.893a.667.667 0 01.667.666v5.334a2 2 0 01-2 2H18zm.893-2V17h-2.226a2 2 0 00-2 2v2.667a.667.667 0 001.333 0v-1.334a.667.667 0 011.333 0v1.334a.667.667 0 00.667.666h.227a.667.667 0 00.666-.666z"
+                                                fill="currentcolor" fill-rule="evenodd"></path>
+                                            <path
+                                                d="M6 17a1.333 1.333 0 011.333 1.333 8.68 8.68 0 003.2 6.734A8.773 8.773 0 0017.88 26.8a8.586 8.586 0 006.587-6.587 8.773 8.773 0 00-4.478-9.539 8.654 8.654 0 00-3.322-.967v2.666a1.332 1.332 0 01-.734 1.187 1.333 1.333 0 01-1.333-.12l-5.333-4a1.333 1.333 0 010-2.133l5.333-4a1.334 1.334 0 012.133 1.066V7.04a11.32 11.32 0 11-12 11.293A1.334 1.334 0 016 17z"
+                                                fill="currentcolor" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="bottom-controllers-left">
+                                    <button class="control" id="fullscreen">
+                                        <svg width="19px" height="19px" viewBox="0 0 14 14">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g transform="translate(-173.000000, -3481.000000)">
+                                                    <g transform="translate(100.000000, 3378.000000)">
+                                                        <g transform="translate(68.000000, 98.000000)">
+                                                            <g>
+                                                                <polygon points="0 0 24 0 24 24 0 24">
+                                                                </polygon>
+                                                                <path
+                                                                    d="M7,14 L5,14 L5,19 L10,19 L10,17 L7,17 L7,14 Z M5,10 L7,10 L7,7 L10,7 L10,5 L5,5 L5,10 Z M17,17 L14,17 L14,19 L19,19 L19,14 L17,14 L17,17 Z M14,5 L14,7 L17,7 L17,10 L19,10 L19,5 L14,5 Z"
+                                                                    fill="#fff"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <div id="volumeContainer">
+                                        <input type="range" name="" id="volumeRange">
+                                        <button class="control" id="volumeBtn">
+                                            <svg x="0px" y="0px" viewBox="0 0 32 32" width="21" height="21">
+                                                <g fill="#fff">
+                                                    <path d="M20.4,2.9c-0.3-0.2-0.7-0.1-1,0.1L9.7,10H3c-0.6,0-1,0.4-1,1v10c0,0.6,0.4,1,1,1h6.7l9.7,7.1c0.2,0.1,0.4,0.2,0.6,0.2
+                        c0.2,0,0.3,0,0.5-0.1c0.3-0.2,0.5-0.5,0.5-0.9V3.8C21,3.4,20.8,3,20.4,2.9z" />
+                                                    <path d="M27.1,9.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4C27.2,12.1,28,14,28,16s-0.8,3.9-2.3,5.3c-0.4,0.4-0.4,1,0,1.4
+                        c0.2,0.2,0.5,0.3,0.7,0.3c0.2,0,0.5-0.1,0.7-0.3C29,20.9,30,18.6,30,16S29,11.1,27.1,9.3z" />
+                                                    <path
+                                                        d="M24.7,12.7c-0.4-0.4-1-0.4-1.4,0.1c-0.4,0.4-0.3,1,0.1,1.4c0.5,0.5,0.8,1.2,0.8,1.9s-0.3,1.4-0.8,1.9
+                        c-0.4,0.4-0.4,1-0.1,1.4c0.2,0.2,0.5,0.3,0.7,0.3c0.2,0,0.5-0.1,0.7-0.3c1-0.9,1.5-2.1,1.5-3.3S25.6,13.5,24.7,12.7z" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loading">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

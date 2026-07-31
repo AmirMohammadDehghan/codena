@@ -1,0 +1,220 @@
+{% extends '../base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+    سبد خرید
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+    <!-- swiper js -->
+    <script src="{% static 'assets/js/jquery-3.1.1.min.js' %} "></script>
+    <script src="{% static 'assets/js/cart_sys_script.js' %} "></script>
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+
+
+
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="hero-section mt-5">
+        <div class="container">
+            <span class="badge bg-primary fs-4 rounded-5">سبد خرید</span>
+            <h2 class="fw-bold text-light fm-morabba mt-3">
+                دوره های افزوده شده به سبد خرید
+            </h2>
+
+
+            {% if cartlist %}
+                <div class="row justify-content-center mt-4">
+
+                    {% for i in cartlist %}
+
+                        <div class="col-xl-4 col-md-5 py-3">
+                            <div class="card h-100 rounded-4">
+                                <img src="{{ i.course.course_image.url }}" class="card-img-top rounded-4"
+                                     alt="{{ i.course.name }}">
+                                <div class="card-body course_data">
+                                    <h2 class="card-title text-light fs-5">{{ i.course.name }}</h2>
+                                    
+                                        <hr>
+                                        <div class="d-flex align-items-center justify-content-between mt-3">
+                                            <input onchange="courseDiscountInputCart('{{ i.course.id }}')"
+                                                   id="cors-discount-code-{{ i.course.id }}" type="text"
+                                                   class="form-control rounded-4" placeholder="کد تخفیف">
+                                            <button onclick="alertify.success('کد تخفیف اعمال شد!');" class="btn btn-warning ms-2 rounded-4">اعمال</button>
+                                        </div>
+                                    
+
+                                    <hr>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="text-light">قیمت اصلی</span>
+                                        <span class="text-light">{{ i.course.original_price }}</span>
+                                    </div>
+                                    <input type="hidden" class="cors_id" value="{{ i.course_id }}">
+                                    {% csrf_token %}
+                                    <hr>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <a id="go-pay-{{ i.course.id }}"
+                                           href="../ATM/request/course/{{ i.course.id }}/no"
+                                           class="btn btn-success w-75">پرداخت</a>
+                                        <button class="btn btn-danger w-75 ms-1 delete-cartlist-item">حذف</button>
+                                    </div>
+                                    <div class="background">
+                                        <div class="tiles">
+                                            <div class="tile tile-1"></div>
+                                            <div class="tile tile-2"></div>
+                                            <div class="tile tile-3"></div>
+                                            <div class="tile tile-4"></div>
+
+                                            <div class="tile tile-5"></div>
+                                            <div class="tile tile-6"></div>
+                                            <div class="tile tile-7"></div>
+                                            <div class="tile tile-8"></div>
+
+                                            <div class="tile tile-9"></div>
+                                            <div class="tile tile-10"></div>
+                                        </div>
+                                        <div class="line line-1"></div>
+                                        <div class="line line-2"></div>
+                                        <div class="line line-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="fs-5 text-secondary">
+                    شما هیچ دوره افزوده شده ای به سبد خرید ندارید!
+                </p>
+            {% endif %}
+
+            <hr>
+            <h2 class="fw-bold text-light mt-5 fm-morabba">
+                فاز های افزوده شده به سبد خرید
+            </h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {% if cartfazelist %}
+                <div class="row justify-content-center mt-4">
+
+
+                    {% for i in cartfazelist %}
+                        <div class="col-xl-4 col-md-5 py-3">
+                            <div class="card h-100 rounded-4">
+                                <img src="{{ i.faze.course.course_image.url }}" class="card-img-top rounded-4"
+                                     alt="{{ i.faze.course.name }} {{ i.faze.name }}">
+                                <div class="card-body">
+                                    <h2 class="card-title text-light fs-5">{{ i.faze.course.name }} {{ i.faze.name }}</h2>
+                                    
+                                        <hr>
+                                        <div class="d-flex align-items-center justify-content-between mt-3">
+                                            <input onchange="fazeDiscountInputCart('{{ i.faze.id }}')"
+                                                   id="faz-discount-code-{{ i.faze.id }}" type="text"
+                                                   class="form-control rounded-4" placeholder="کد تخفیف">
+                                            <button onclick="alertify.success('کد تخفیف اعمال شد!');" class="btn btn-warning ms-2 rounded-4">اعمال</button>
+                                        </div>
+                                    
+
+                                    <hr>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="text-light">قیمت اصلی</span>
+                                        <span class="text-light">{{ i.faze.original_price }}</span>
+                                    </div>
+
+                                    <input type="hidden" class="faz_id" value="{{ i.faze_id }}">
+                                    {% csrf_token %}
+                                    <hr>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <a id="go-faze-pay-{{ i.faze.id }}"
+                                           href="../ATM/request/faze/{{ i.faze.id }}/no" class="btn btn-success w-75">پرداخت</a>
+                                        <button id="{{ i.faze_id }}" class="btn btn-danger w-75 ms-1 delete-faze-cartlist-item">حذف</button>
+                                    </div>
+                                    <div class="background">
+                                        <div class="tiles">
+                                            <div class="tile tile-1"></div>
+                                            <div class="tile tile-2"></div>
+                                            <div class="tile tile-3"></div>
+                                            <div class="tile tile-4"></div>
+
+                                            <div class="tile tile-5"></div>
+                                            <div class="tile tile-6"></div>
+                                            <div class="tile tile-7"></div>
+                                            <div class="tile tile-8"></div>
+
+                                            <div class="tile tile-9"></div>
+                                            <div class="tile tile-10"></div>
+                                        </div>
+                                        <div class="line line-1"></div>
+                                        <div class="line line-2"></div>
+                                        <div class="line line-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            {% else %}
+                <p class="fs-5 text-secondary">
+                    شما هیچ فاز افزوده شده به سبد خریدی ندارید!
+                </p>
+            {% endif %}
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

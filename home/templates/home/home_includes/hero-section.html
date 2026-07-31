@@ -1,0 +1,36 @@
+{% load static %}
+
+
+<section class="hero-section  d-sm-flex">
+    <video autoplay muted loop playsinline id="heroImg">
+        <source src="{% static 'assets/video/hero-video.mp4' %}" type="video/mp4">
+    </video>
+    <img src="{% static 'assets/img/hero-bg.webp' %}" alt="" id="heroImg">
+    <div class="container text-center">
+            <h1 class="fw-bold display-4 mb-0 title">
+                کدنا یعنی مسیری با کیفیت
+            </h1>
+            <div class="mt-5 d-flex flex-wrap align-items justify-content-center">
+                <div class="position-relative mw-100 hero-search-container" data-bs-toggle="modal"
+                    data-bs-target="#searchModal" aria-label="باز کردن جست و جو">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="#cecece"
+                        style="z-index: 1;right: 13px;top: 10px;" class="position-absolute">
+                        <path
+                            d="M17.7531 16.7188L13.5656 12.5312C14.4719 11.4219 14.9719 10.025 14.9719 8.5C14.9719 4.90937 12.0616 2 8.47188 2C4.88219 2 2 4.91031 2 8.5C2 12.0897 4.91001 15 8.47188 15C9.99657 15 11.3953 14.4716 12.5031 13.5925L16.6906 17.78C16.8656 17.9281 17.0594 18 17.25 18C17.4406 18 17.6338 17.9268 17.7803 17.7803C18.0719 17.4875 18.0719 17.0125 17.7531 16.7188ZM3.50001 8.5C3.50001 5.74312 5.74313 3.5 8.50001 3.5C11.2569 3.5 13.5 5.74312 13.5 8.5C13.5 11.2569 11.2569 13.5 8.50001 13.5C5.74313 13.5 3.50001 11.2563 3.50001 8.5Z"
+                            fill="#cecece"></path>
+                    </svg>
+                    <input type="text" class="form-control" name="" id="" placeholder="هرچه می خواهد دل تنگت بگو...">
+                </div>
+            </div>
+        </div>
+        <a href="#road-map" class="rounded-circle next-section p-0 position-absolute">
+            <div class='scrolldown'>
+                <div class="chevrons">
+                    <div class='chevrondown'></div>
+                    <div class='chevrondown'></div>
+                </div>
+            </div>
+        </a>
+</section>
+
+

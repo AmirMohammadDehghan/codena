@@ -1,0 +1,99 @@
+.word-from-codna-section {
+    padding: 294px 0 24px
+}
+
+.word-from-codna-image-container {
+    width: 812px;
+    height: 100%;
+    min-width: 812px
+}
+
+.symbol {
+    backdrop-filter: blur(12px);
+    color: #fff;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 17.71%, rgba(255, 255, 255, .12) 100%), rgba(255, 255, 255, .01);
+    border: 0 !important;
+    width: var(--symbol-width);
+    height: var(--symbol-height);
+    overflow: hidden;
+    position: relative;
+    transition: background .3s ease-in-out
+}
+
+.symbol::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .1) 100%), linear-gradient(0deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .05));
+    border-radius: inherit;
+    content: "";
+    inset: 0;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 1px;
+    pointer-events: none;
+    position: absolute
+}
+
+.symbol-content {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    animation: scrolling-symbol var(--symbol-animation-duration) linear infinite
+}
+
+.symbol-content li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: var(--symbol-element-width);
+    max-height: 100%;
+    font-size: calc(var(--symbol-height)*3/4);
+    white-space: nowrap
+}
+
+.symbol-content li img {
+    width: 100%;
+    border: 2px solid #eee
+}
+
+@keyframes scrolling-symbol {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translateX(calc(-1 * var(--symbol-element-width) * var(--symbol-elements)))
+    }
+}
+
+@media only screen and (max-width:779px) {
+    :root {
+        --symbol-height: 16vh;
+        --symbol-elements-displayed: 3
+    }
+
+    .bold-course {
+        padding-top: 20px;
+    }
+}
+
+@media only screen and (max-width:556px) {
+    .courses .card-data {
+        margin-top: 0 !important;
+    }
+
+    .courses .card-body {
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+}
+
+.road-map-section {
+    background: linear-gradient(180deg, #101113, rgb(20 109 165 / 20%), #101113);
+}
+
+.light-mode .road-map-section {
+    background: linear-gradient(180deg, #f1f1f1, rgb(255 139 0 / 30%), #f1f1f1);
+}

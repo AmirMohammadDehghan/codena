@@ -1,0 +1,208 @@
+.podcast-section {
+    margin-top: 20px;
+}
+
+.title,
+.podcast-section {
+    text-align: start !important;
+}
+
+#player01 {
+    grid-area: A;
+    padding: 50px 38px;
+    position: relative;
+    margin-top: 75px;
+}
+
+#player01 img {
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px -5px #101113bd;
+    width: 200px;
+    height: 200px;
+    top: -75px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#player01 .info {
+    padding-top: 28px;
+}
+
+.wrapper {
+    padding-top: 80px;
+}
+
+.player {
+    background: rgba(255, 255, 255, .02);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(16px);
+    padding: 28px;
+    border-radius: 1rem;
+}
+
+.player img {
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.info {
+    color: #E1E1E6;
+}
+
+.info p {
+    opacity: 0.68;
+    font-size: 19px;
+}
+
+.info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.player h1 {
+    font-size: 27px;
+    color: #E1E1E6;
+    padding-bottom: 7px;
+}
+
+
+.controls {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 25px;
+}
+
+.controls div {
+    cursor: pointer;
+}
+
+.track {
+    padding-top: 28px;
+    position: relative;
+
+}
+
+.track::before {
+    content: '';
+    height: 6px;
+    width: 100%;
+    display: block;
+    background: #D9D9D9;
+    opacity: 0.3;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.track::after {
+    content: '';
+    height: 6px;
+    width: 85%;
+    display: block;
+    background: #D9D9D9;
+    border-radius: 10px;
+
+
+}
+
+.time {
+    opacity: 0.7;
+    font-size: 14px;
+    color: gainsboro;
+
+    display: flex;
+    justify-content: space-between;
+    padding-top: 9.6px;
+}
+
+@media (max-width: 670px) {
+    #boxes {
+        display: flex;
+        flex-direction: column;
+
+        max-width: 270px;
+        margin: auto;
+
+
+        height: auto;
+        padding-block: 60px;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .card-body .title,
+    #showMore {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width:769px) {
+    #player01 {
+        margin-top: calc(2rem + 75px);
+    }
+}
+
+@media only screen and (max-width:556px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .card-body .title,
+    #showMore {
+        font-size: 16px;
+    }
+}
+
+.title .text-primary {
+    background: linear-gradient(180deg, #fff 0, var(--color-primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.card {
+    background: rgba(255, 255, 255, .02);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(16px);
+}
+
+.last-podcasts {
+    border-top: 1px dashed rgba(187, 188, 190, .25);
+    padding-top: 2rem;
+}
+
+#descriptionsContainer {
+    max-height: 150px;
+    overflow: hidden;
+    padding: 0;
+}
+
+#descriptionsContainer.open {
+    max-height: fit-content;
+}
+
+.progress {
+    height: 6px;
+    width: 100%;
+    background: #50595f;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    float: inline-end;
+}

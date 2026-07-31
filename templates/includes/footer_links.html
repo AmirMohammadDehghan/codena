@@ -1,0 +1,48 @@
+{% load static %}
+{% load i18n %}
+
+
+
+
+
+<script type="text/javascript">
+  !function(){var i="vwH8Cb",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+</script>
+
+<!-- bootstrap js -->
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- app script -->
+<script src="{% static 'assets/js/apps.js' %}" type="module"></script>
+
+ <script>
+
+
+    const imgRoadMaps = document.querySelectorAll('.roade-map-img')
+
+    imgRoadMaps.forEach(el => {
+        el.addEventListener("mousemove", (event) => {
+            const height = el.clientHeight
+            const width = el.clientWidth
+
+            const xVal = event.layerX
+            const yVal = event.layerY
+
+            const yRotation = 20 * ((xVal - width / 2) / width)
+
+            const xRotation = -20 * ((yVal - height / 2) / height)
+
+            const string = 'perspective(300px) scale(1.05) rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)'
+
+            el.style.transform = string
+        })
+
+        el.addEventListener("mouseleave", () => {
+            el.style.transform = "perspective(300px) rotateX(0deg) rotateY(0deg)"
+        })
+    })
+    console.log(imgRoadMaps)
+</script>
+{# recapcha #}
+
+

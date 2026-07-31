@@ -1,0 +1,288 @@
+{% load static %}
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+<style>
+    .cke_inner,
+    .cke_chrome {
+        border-radius: 12px;
+    }
+
+    .cke_top,
+    .cke_editable,
+    .cke_bottom {
+        background-color: #101113;
+    }
+
+    .cke_top {
+        border-radius: 12px 12px 0 0;
+    }
+
+    .cke_top,
+    .cke_chrome,
+    a.cke_combo_button:hover,
+    .cke_combo_off a.cke_combo_button:focus,
+    .cke_combo_off a.cke_combo_button:active,
+    a.cke_button_off:hover,
+    a.cke_button_off:focus,
+    a.cke_button_off:active,
+    .cke_combo_on a.cke_combo_button,
+    .cke_combo_off a.cke_combo_button:active {
+        border-color: rgb(255 255 255 / 20%);
+    }
+
+    .cke_bottom {
+        border-radius: 0 0 12px 12px;
+        border-top-color: rgb(255 255 255 / 20%);
+    }
+
+    .cke_voice_label,
+    .cke_combo_text,
+    body[role="textbox"] {
+        color: #fff;
+    }
+
+    .cke_combo_arrow {
+        border-top-color: #fff;
+    }
+
+    .cke_button_icon {
+        filter: invert(1);
+    }
+
+    .cke_resizer_rtl {
+        border-color: transparent transparent transparent rgb(255 255 255);
+        margin-bottom: 10px;
+        margin-left: 5px;
+    }
+
+    a.cke_combo_button:hover,
+    .cke_combo_off a.cke_combo_button:focus,
+    .cke_combo_off a.cke_combo_button:active,
+    a.cke_button_off:hover,
+    a.cke_button_off:focus,
+    a.cke_button_off:active,
+    .cke_combo_on a.cke_combo_button,
+    .cke_combo_off a.cke_combo_button:active {
+        background: rgb(16 17 19);
+    }
+
+    a.cke_combo_button,
+    .cke_combo_open,
+    .cke_combo_text,
+    .cke_button {
+        cursor: pointer;
+    }
+
+    .cke_rtl .cke_combo::after,
+    .cke_rtl .cke_toolgroup a.cke_button:last-child::after {
+        border-left-color: rgb(255 255 255 / 20%);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // گرفتن تمامی دکمه‌های انتخاب فایل
+        var buttons = document.querySelectorAll('.file-button');
+
+        // اضافه کردن event listener به هر دکمه
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                // پیدا کردن ورودی فایل مرتبط با دکمه
+                var fileInput = this.nextElementSibling;
+                fileInput.click();
+            });
+        });
+
+        // گرفتن تمامی ورودی‌های فایل
+        var fileInputs = document.querySelectorAll('.file-input');
+
+        // اضافه کردن event listener به هر ورودی فایل
+        fileInputs.forEach(function (fileInput) {
+            fileInput.addEventListener('change', function () {
+                // پیدا کردن فرم مرتبط با ورودی فایل
+                var form = this.closest('form');
+                // بررسی اینکه فایل انتخاب شده است
+                if (this.files.length > 0) {
+                    var formData = new FormData(form);
+
+                    $.ajax({
+                        url :  '/courses/upload-ticket-media/',
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alertify.success(response.status);
+                            console.log(response.status)
+                            {#location.reload()#}
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+<section>
+    <div class="container" id="ticketForm">
+        <h2 class="fs-1 fw-bold text-light mt-3 pb-0 fm-morabba">تیکت به پشتیبانی دوره :</h2>
+
+        {#        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">#}
+        {#            <input type="file" id="fileInput" name="file" style="display: none;" onchange="handleFileChange()">#}
+        {#            <button type="button" onclick="triggerFileInput()">انتخاب فایل</button>#}
+        {#        </form>#}
+
+        <form class="pt-3 pb-0" method="post" action="{% url 'home:create_ticket_view' pk=course_detail.id %}">
+            {% csrf_token %}
+            <div class="row">
+
+                <!-- start title input div -->
+                <div class="col-md-6">
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="ticket_title_form" style="margin-left: 0px;">عنوان تیکت</label>
+                        {{ ticket_form.title }}
+                        {#                <input type="text" id="title-ticket" class="form-control"#}
+                        {#                    placeholder="مثلا مشکل در اجرای کد قسمت سیزدهم">#}
+                    </div>
+                </div>
+                <!-- end title input div -->
+
+                <!-- start section course input div -->
+                <div class="col-md-6">
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="ticket_course_ep_form" style="margin-left: 0px;">قسمت
+                            دوره</label>
+                        {{ ticket_form.course_ep }}
+                        {#                <input type="number" min="0" id="section-course-ticket" class="form-control" placeholder="مثلا 12">#}
+                    </div>
+                </div>
+                <!-- end section course input div -->
+
+            </div>
+            <div class="mb-3 p-4">
+
+                <br>
+                <div class="align-content-center">
+                    {{ ticket_form.content }}
+                </div>
+            </div>
+            <input type="hidden" name="parent_id" id="parent_ticket_id" value="">
+            <button type="submit"
+                    class="btn btn-primary  btn-outline-light btn-lg">ارسال
+            </button>
+        </form>
+        {% if tickets != none %}
+            {% for ticket in tickets %}
+
+                <div class="pt-3 pb-0 my-3">
+                    <div class="card w-75  message-box">
+
+                            <div class="card-header d-flex align-items-center gap-2 mb-2">
+                                <img src=" {% static 'assets/img/loading.webp' %}"
+                                     data-src="{{ ticket.author.user_image.url }}"
+                                     class="rounded-circle lazy" width="40" height="40" alt="">
+                                <h5 class="card-title mb-0">شما گفتید :</h5>
+                            </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{ ticket.title }}
+                            </p>
+                            <p class="card-text">
+                                {{ ticket.course_ep }}
+                            </p>
+                            <p class="card-text">
+                                {{ ticket.content | safe }}
+                            </p>
+
+                            <form action="{% url 'home:upload_ticket_media' %}" method="post"
+                                  enctype="multipart/form-data" style="display:inline-flex">
+                                {% csrf_token %}
+                                <input type="hidden" name="ticket_id" value="{{ ticket.id }}"/>
+                                <button type="button" class="file-button btn" data-ticket-id="{{ ticket.id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                                         viewBox="0 0 512 512">
+                                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path fill="#ffffff"
+                                              d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3l-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352H192c0 35.3 28.7 64 64 64s64-28.7 64-64H448c35.3 0 64 28.7 64 64v32c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V416c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/>
+                                    </svg>
+                                </button>
+                                <input type="file" name='ticket_file' class="file-input" style="display: none;">
+                            </form>
+
+
+                            <a href="#ticketForm" class="reply-link btn" data-ticket-id="{{ ticket.id }}">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="#fff">
+                                    <path
+                                            d="M6.222 4.733V1L0 7.533l6.222 6.534V10.24c4.445 0 7.556 1.493 9.778 4.76-.889-4.667-3.556-9.333-9.778-10.267z">
+                                    </path>
+                                </svg>
+                            </a>
+
+
+                            <button data-num-replay="1" data-mode="hide" data-kind="replayCollapseBtn"
+                                    class="btn d-inline-flex align-items-center gap-1"
+                                    data-bs-toggle="collapse" data-bs-target="#replayCollapse{{ ticket.id }}"
+                                    aria-expanded="false" aria-controls="replayCollapse{{ ticket.id }}">
+                                نمایش
+                                <strong>{{ ticket.replies.count }}</strong>
+                                پاسخ
+                                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                                     style="rotate: 180deg;">
+                                    <path
+                                            d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                            <div class="collapse" id="replayCollapse{{ ticket.id }}">
+                                <hr>
+                                {% for reply in ticket.replies.all %}
+
+                                    <div class="ms-3 ps-3 border-start border-primary">
+                                        <h6 class="card-title">{{ reply.author.username }} در جواب گفت :</h6>
+                                        <p class="card-text text-justify">
+                                            {{ reply.content | safe }}
+                                        </p>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+
+        {% else %}
+            <p class="text-secondary lh-lg fs-5 mb-0 text-secondary text-justify pt-3 pb-0">
+                نظری وجود ندارد
+                اولین نفر باشید (:
+            </p>
+        {% endif %}
+
+
+    </div>
+</section>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const replyLinks = document.querySelectorAll('.reply-link');
+        replyLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const ticketId = this.getAttribute('data-ticket-id');
+                document.getElementById('parent_ticket_id').value = ticketId;
+                document.getElementById('ticket_course_ep_form').value = 'replied';
+                document.getElementById('ticket_course_ep_form').type = 'hidden';
+                document.getElementById('ticket_title_form').value = 'replied';
+                document.getElementById('ticket_title_form').type = 'hidden';
+            });
+        });
+    });
+
+    document.getElementsByClassName('django-ckeditor-widget').style = ''
+</script>
+

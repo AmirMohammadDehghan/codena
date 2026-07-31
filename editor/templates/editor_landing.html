@@ -1,0 +1,43 @@
+{% extends './base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+    لندینگ ادیتور های کدنا
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+    <!-- video css -->
+    <link rel="stylesheet" href="{% static 'assets/css/video1_1.css' %}">
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+    <script src="{% static 'assets/js/video.js' %}"></script>
+    <script>
+        createVideoPlayer("#codeEditorVideo")
+    </script>
+
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+
+{% block content %}
+
+
+    {# hero section #}
+    {% include './landing_includes/hero-section.html' %}
+    {# intro section   #}
+
+
+    {# guide section #}
+{#    {% include './landing_includes/guide-section.html' %}#}
+    {# guide section   #}
+
+
+    {# hero section #}
+    {% include './landing_includes/editors-section.html' %}
+    {# intro section   #}
+
+
+{% endblock content %}

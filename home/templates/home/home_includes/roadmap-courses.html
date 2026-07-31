@@ -1,0 +1,67 @@
+{% load static %}
+
+<div class="swiper-slide">
+                                <div class="card h-100">
+                                    <div class="half-price-internet position-absolute start-0 end-0 px-2 py-1 m-2">
+                                <svg width="12" height="12" viewBox="0 0 25 25">
+                                    <path d="M12.5,0A12.5,12.5,0,1,0,25,12.5,12.52,12.52,0,0,0,12.5,0Zm5.26,12.92-8,5A.56.56,0,0,1,9.5,18a.5.5,0,0,1-.24-.06A.51.51,0,0,1,9,17.5V7.5a.51.51,0,0,1,.26-.44.49.49,0,0,1,.51,0l8,5a.49.49,0,0,1,0,.84Z" fill="#fff"></path>
+                                </svg>
+                                <span>مشاهده با اینترنت نیم بها</span>
+                            </div>
+                                    <img src="{{ detail.course.course_image.url }}" class="card-img-top rounded-4"
+                                         alt="...">
+                                    <div class="card-body">
+                                        <h2 class="card-title text-light fs-4 fw-bold">{{ detail.course.name }}</h2>
+                                        <p class="card-text text-secondary text-justify my-3">
+                                            {{ detail.course.snippet }}...
+                                        </p>
+                                        <div class="d-sm-block d-none col-auto">
+                                            <!-- Price -->
+
+                                            <div class="d-flex justify-content-between align-items-center text-light mt-5 card-data">
+                                        <span class="fs-5 fw-bold ms-2 text-light">قیمت:</span>
+                                    <div class="fs-5 fw-bold ms-2 text-light">
+                                                {% if detail.course.status %}
+                                                    رایگان
+                                                {% else %}
+                                                   <span data-num="{{ detail.course.original_price }}">
+
+                                                </span>
+                                                   <svg style="width: 26px; height: 26px; fill: #fff!important;">
+                                                    <use xlink:href="#toman"></use>
+                                                </svg>
+                                                {% endif %}
+
+
+                                            </div>
+
+                                </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="card-footer border-light text-center">
+                                        <a href="courses/{{ detail.course.id }}/{{ detail.course.slug }}"
+                                           class="link-underline link-underline-opacity-0 text-light d-block align-items-center mt-2">
+                                    <span class="me-2">
+                                        مشاهده اطلاعات دوره
+                                    </span>
+                                            <svg height="25" viewBox="0 0 7 12">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g transform="translate(-652.000000, -2464.000000)">
+                                                        <g transform="translate(100.000000, 2404.000000)">
+                                                            <g transform="translate(544.000000, 54.000000)">
+                                                                <g>
+                                                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                                                    <path
+                                                                            d="M14.71,15.88 L10.83,12 L14.71,8.12 C15.1,7.73 15.1,7.1 14.71,6.71 C14.32,6.32 13.69,6.32 13.3,6.71 L8.71,11.3 C8.32,11.69 8.32,12.32 8.71,12.71 L13.3,17.3 C13.69,17.69 14.32,17.69 14.71,17.3 C15.09,16.91 15.1,16.27 14.71,15.88 Z"
+                                                                            id="arrowLeftIcon"></path>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>

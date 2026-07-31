@@ -1,0 +1,135 @@
+{% for faze in course_faze %}
+
+    <div class="accordion mt-3" id="heading{{ faze.id }}">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ faze.id }}" aria-expanded="true"
+                        aria-controls="collapse{{ faze.id }}">
+                    <svg width="25px" height="25px" viewBox="0 0 24 24"
+                         fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M7 10V8C7 5.23858 9.23858 3 12 3C14.0503 3 15.8124 4.2341 16.584 6M12 14.5V16.5M8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C17.7202 10 16.8802 10 15.2 10H8.8C7.11984 10 6.27976 10 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21Z"
+                                  stroke="#2af401" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <span class="ms-2">{{ faze.name }}</span>
+                </button>
+            </h2>
+
+            <div id="collapse{{ faze.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ faze.id }}"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+
+
+                    {% for seasons in course_seasons %}
+                        {% if seasons.course_faze == faze %}
+
+
+
+
+                            <div class="accordion mb-2" id="Part{{ seasons.id }}">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+
+                                        <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#PartContent{{ seasons.id }}"
+                                                aria-expanded="false"
+                                                aria-controls="Part{{ seasons.id }}">
+                                            <svg width="25px" height="25px" viewBox="0 0 24 24"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                   stroke-linejoin="round"></g>
+                                                <g id="SVGRepo_iconCarrier">
+                                                    <path d="M7 10V8C7 5.23858 9.23858 3 12 3C14.0503 3 15.8124 4.2341 16.584 6M12 14.5V16.5M8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C17.7202 10 16.8802 10 15.2 10H8.8C7.11984 10 6.27976 10 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21Z"
+                                                          stroke="#2af401" stroke-width="2" stroke-linecap="round"
+                                                          stroke-linejoin="round"></path>
+                                                </g>
+                                            </svg>
+                                            <span class="ms-2">{{ seasons.name }} </span>
+                                        </button>
+
+                                    </h2>
+                                    <div id="PartContent{{ seasons.id }}" class="accordion-collapse collapse"
+                                         data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <ul class="list-group list-group-flush">
+
+
+                                                {% for sections in course_sections %}
+                                                    {% if sections.course_season == seasons %}
+
+
+                                                        <li class="list-group-item bg-dark rounded-4 md-2 d-flex align-item-center justify-content-between">
+                                                            <a
+
+                                                                    {% if sections.is_google_drive %}
+                                                                        data-video-target-src=" https://drive.google.com/uc?export=download&id={{ sections.video_id }}"
+                                                                    {% else %}
+                                                                        data-video-target-src="{{ sections.video_id }}"
+                                                                    {% endif %}
+                                                                        data-img-target-src="{{ course_detail.course_image.url }}"
+                                                                        class="link-underline link-underline-opacity-0 text-light"
+                                                            >
+                                                                <svg width="25px" height="25px" viewBox="0 0 24 24"
+                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                                       stroke-linejoin="round"></g>
+                                                                    <g id="SVGRepo_iconCarrier">
+                                                                        <path d="M7 10V8C7 5.23858 9.23858 3 12 3C14.0503 3 15.8124 4.2341 16.584 6M12 14.5V16.5M8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C17.7202 10 16.8802 10 15.2 10H8.8C7.11984 10 6.27976 10 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21Z"
+                                                                              stroke="#2af401" stroke-width="2"
+                                                                              stroke-linecap="round"
+                                                                              stroke-linejoin="round"></path>
+                                                                    </g>
+                                                                </svg>
+                                                                <span class="ms-2">{{ sections.section_name }}</span>
+                                                            </a>
+                                                            <div class="col-auto my-2">
+                                                            {% if sections.download_access %}
+
+
+                                                                {% if sections.is_google_drive %}
+
+                                                                    <button onclick="window.open('https://drive.google.com/uc?export=download&id={{ sections.video_id }}')"
+                                                                            class="btn ms-auto">دانلود
+                                                                    </button>
+
+                                                                {% else %}
+                                                                    <button onclick="window.open('{{ sections.video_id }}')"
+                                                                            class="btn ms-auto">دانلود
+                                                                    </button>
+                                                                {% endif %}
+                                                            </div>
+                                                            {% endif %}
+                                                        </li>
+
+
+
+                                                    {% endif %}
+                                                {% endfor %}
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        {% endif %}
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

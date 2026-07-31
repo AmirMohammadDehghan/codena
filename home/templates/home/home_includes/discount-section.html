@@ -1,0 +1,25 @@
+{% load static %}
+
+{% if main_slider %}
+
+<div class="modal fade" id="specialDiscountModal" tabindex="-1" aria-labelledby="specialDiscountModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="specialDiscountModalLabel">{{ main_slider.name }}</h1>
+                    <button type="button" class="btn-close text-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ main_slider.image.url }}" class="img-fluid rounded-4" alt="">
+                    <div class="mt-4">
+
+                        <a href="{{ main_slider.link }}" class="btn">مشاهده </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

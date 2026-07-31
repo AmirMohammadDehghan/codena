@@ -1,0 +1,53 @@
+{% extends '../base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+فرم دسترسی به فاز
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+
+{% block content %}
+
+<section class="form-container">
+{% csrf_token %}
+<form action="" method="post" enctype="multipart/form-data" class='w-50 form-control justify-content-center' >
+    <div class="mb-3 p-5">
+        <label for="source" class="form-label fs-3 fw-bold"><p> انتخاب فاز مورد نظر</p></label>
+                {% csrf_token %}
+        <select id='source' class="form-select fs-4 box" aria-label="Default select example" onchange="copyTextValue()">
+            <option selected class='fs-4' disabled>یک فاز را انتخاب کنید</option>
+            {% for faze in fazes %}
+                <option class='fs-4' value="{{faze.id}}">{{faze.name}} {{faze.course.name}}</option>
+            {% endfor %}
+            
+        </select>
+      </div>
+      <div class="mb-3 p-5 pt-0">
+        <label for="discount_code" class="form-label fs-3 fw-bold"><p> کد تخفیف را وارد کنید</p></label>
+        <input name='discount_code' type="text" placeholder="کد تخفیف ..." class="form-control box" id="discount_code">
+      </div>
+      <div class="mb-3 p-5 pt-0">
+      <button type="submit" class="btn btn-primary w-100 p-3 pt-4 pb-4 fs-3" style="border-radius: 12px;">ثبت و تایید نهایی</button>
+        </div>
+  
+  <input type="hidden" name="selected_faze" id='destination'>
+</form>
+
+</section>
+<script>
+    function copyTextValue() {
+        var text1 = document.getElementById("source").value;
+        document.getElementById("destination").value = text1;
+    }
+</script> </section>
+{% endblock content %}

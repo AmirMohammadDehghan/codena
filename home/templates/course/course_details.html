@@ -1,0 +1,48 @@
+{% extends '../base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+{{ course_detail.name }} دوره
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+
+<style>
+  @media only screen and (max-width: 556px) {
+      .message-box {
+          width: 100% !important;
+      }
+  }
+
+  @media only screen and (max-width: 786px) {
+      .teacher-card-body-row {
+          flex-direction: column;
+      }
+
+      .teacher-card-body-row .col-auto:nth-child(3) {
+          margin-left: auto;
+      }
+  }
+</style>
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+{% block course_css %}
+<link rel="stylesheet" href="{% static 'assets/css/video1_1.css' %} ">
+{% endblock course_css %}
+{% block script %}
+
+
+
+<!-- courses script -->
+<script src="{% static 'assets/js/courses1_1.js' %} "></script>
+
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+{% block course_js %}
+<!-- video js -->
+<script src="{% static 'assets/js/video.js' %} "></script>
+{% endblock course_js %}
+
+

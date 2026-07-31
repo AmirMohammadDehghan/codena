@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    آکادمی کد نویسی کدنا
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+    <!-- swiper css -->
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-custom.css' %}">
+    <!-- video css -->
+    <link rel="stylesheet" href="{% static 'assets/css/video.css' %}">
+    <!-- index css -->
+    <link rel="stylesheet" href="{% static 'assets/css/road-map.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/timeline.css' %}">
+
+
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+    <!-- swiper js -->
+    <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/slider.js' %}"></script>
+
+
+    <script src="{% static 'assets/js/video.js' %}"></script>
+
+    <script>
+        createVideoPlayer("#roadeMapVideo")
+    </script>
+    <script src="{% static 'assets/js/roadmap.js' %}"></script>
+
+    <!-- show more -->
+    <script>
+        var descriptionsContianer = document.getElementById("descriptionsContianer");
+        var showMoreBtn = document.getElementById("showMore");
+
+        showMoreBtn.onclick = function () {
+            if (descriptionsContianer.className == "container open") {
+                //shrink the box
+                descriptionsContianer.className = "container position-relative";
+                showMoreBtn.innerHTML = "نمایش بیشتر" + `
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" style="rotate: 180deg;">
+                    <path
+                        d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            `;
+            } else {
+                //expand the box
+                descriptionsContianer.className = "container open";
+                showMoreBtn.innerHTML = "نمایش کمتر" + `
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M12 7V17M12 7L16 11M12 7L8 11M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            `;
+            }
+        };
+    </script>
+    <!-- accordion -->
+    <script>
+        const labelTouch = document.querySelectorAll('[for="touch"]')
+        if (labelTouch) {
+            labelTouch.forEach(el => {
+                let isShow = false
+                el.addEventListener("click", () => {
+                    const elParent = el.parentElement
+                    const accordionItem = elParent.querySelector(".accordion-course__item")
+                    const accordionItemContainer = accordionItem.querySelectorAll(".accordion-course__item-container")
+                    let maxHeight = 0
+                    accordionItemContainer.forEach(el => {
+                        maxHeight += el.offsetHeight
+                    })
+                    if (!isShow) {
+                        accordionItem.style.height = `${maxHeight}px`
+                        isShow = true
+                    } else {
+                        accordionItem.style.height = 0
+                        isShow = false
+                    }
+                    const accordionCourseIcon = el.querySelector(".accordion-course__icon")
+                    accordionCourseIcon.classList.toggle('active')
+                })
+            })
+        }
+    </script>
+{% endblock script %}
+
+
+{% block content %}
+
+
+    {# hero section #}
+    {% include './map_includes/hero-section.html' %}
+
+    {# intro section   #}
+
+
+    {# course section #}
+    {% include './map_includes/course-section.html' %}
+
+    {#course  section   #}
+
+
+    {# contact form  section #}
+    {% include './map_includes/contact-section.html' %}
+
+{# contact form  section   #}
+
+
+    {# buy all course  section #}
+{#    {% include './map_includes/buy-courses-section.html' %}#}
+
+{# buy all course  section   #}
+
+
+{# about  section #}
+    {% include './map_includes/about-section.html' %}
+
+{# about  section   #}
+
+
+    {# top  questions  section #}
+    {% include './map_includes/questions-section.html' %}
+
+{#top questions  section   #}
+
+
+<script>
+    (() => { "use strict"; let t = document.querySelectorAll(".needs-validation"), e = document.getElementById("phoneNumberInput"); function s() { let t = e.value.trim(), s = /^0\d{10}$/; return console.log("a"), s.test(t) ? (e.classList.remove("is-invalid"), e.classList.add("is-valid")) : (e.classList.add("is-invalid"), e.classList.remove("is-valid")), s.test(t) } e.addEventListener("input", s), Array.from(t).forEach(t => { t.addEventListener("submit", e => { t.checkValidity(), s() || (e.preventDefault(), e.stopPropagation()), t.classList.add("was-validated") }, !1) }) })();
+</script>
+
+<script>
+    function addCommas(number) {
+        var numString = number.toString();
+        var result = "";
+        var count = 0;
+
+        for (var i = numString.length - 1; i >= 0; i--) {
+            result = numString.charAt(i) + result;
+            count++;
+            if (count % 3 === 0 && i !== 0) {
+                result = "," + result;
+            }
+        }
+
+        return result;
+    }
+
+    const numbersElem = document.querySelectorAll("[data-num]")
+    numbersElem.forEach(el => {
+        let inputNum = el.getAttribute("data-num")
+        let outPutNum = addCommas(inputNum)
+        el.innerHTML = outPutNum
+    })
+</script>
+
+
+
+
+{% endblock content %}

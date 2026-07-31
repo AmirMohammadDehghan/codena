@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="badge bg-primary fs-4 rounded-5">خانواده کدنا</span>
+                <h1 class="mt-4 fw-bold text-light title">
+                    با اعضا و مدرسین حرفه ای ما آشنا شوید
+                </h1>
+                <p class="mt-4 text-secondary fs-5">
+
+                    سلام رفقا!! توی این صفحه قراره با خانواده کدنا که شامل کلی از ادمای خبره باحال و مدرسین حرفعی و کاربرلد هست  شما اینجا میتونید با تمومشون آشنا شید
+                    پس بزن بریم!
+                </p>
+            </div>
+            <div class="row">
+                {% for member in object_list %}
+                <div class="col-md-4 my-1">
+                    <div class="card border shadow-0 h-100">
+                        <div class="card-header border-light text-center">
+                            <img src="{{ member.user.user_image.url }}" width="100" height="100" class="rounded-circle"
+                                alt="avatar">
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-text fs-4 fw-semibold text-light ms-2 text-center fm-morabba">
+                                {{ member.user.username }}
+                            </h1>
+                            <p class="card-text text-secondary text-justify fs-6">
+                                {{ member.small_description }}
+                            </p>
+                            <a href="{% url 'members:MemberDetailView' member.slug  %}" class="btn btn-light d-block w-100 mt-3">اطلاعات بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

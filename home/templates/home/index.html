@@ -1,0 +1,90 @@
+﻿{% extends '../base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+    آکادمی کدنا
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+    <meta name="enamad" content="230305"/>
+    <meta name="samandehi" content="999756510"/>
+    <!-- swiper css -->
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-custom.css' %}">
+    <!-- video css -->
+    <link rel="stylesheet" href="{% static 'assets/css/video.css' %}">
+    <!-- index css -->
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+    <!-- swiper js -->
+    <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/slider.js' %}"></script>
+
+
+    <script src="{% static 'assets/js/video.js' %}"></script>
+    <script>
+        createVideoPlayer("#AboutVideo")
+    </script>
+    <!-- index script -->
+
+
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+
+
+
+
+{% block content %}
+
+
+
+        <!-- Modal special discount -->
+        {% include './home_includes/discount-section.html' %}
+    <!-- Modal special discount -->
+
+
+{# hero section #}
+    {% include './home_includes/hero-section.html' %}
+
+
+{# intro section   #}
+
+
+    {% include './home_includes/intro-section.html' %}
+
+
+{# road maps sections #}
+    {% include './home_includes/road-maps-section.html' %}
+{#    least courses #}
+
+
+    {% include './home_includes/least-course-section.html' %}
+
+{#    eidtor section #}
+
+
+    {% include './home_includes/editor-section.html' %}
+
+
+
+{# blog section#}
+
+    {% include './home_includes/blog-section.html' %}
+
+    {% include './home_includes/podcast.html' %}
+
+        {% include './home_includes/about-section.html' %}
+
+
+
+
+
+
+
+
+{% endblock content %}

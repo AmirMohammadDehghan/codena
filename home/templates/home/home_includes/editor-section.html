@@ -1,0 +1,29 @@
+{% load static %}
+
+
+<section>
+    <div class="container  ">
+        <div class="text-center card flat-card p-3 my-5  section-height-fit">
+            <h1 class="display-3 title fw-bold fm-morabba">
+                ادیتور کدنا
+            </h1>
+            <div class="row align-items-center mt-5">
+                <div class="col-xl-8">
+                    <img src="{% static 'assets/img/editor.webp' %}" class="img-fluid rounded-4" alt="">
+                </div>
+                <div class="col-xl-4">
+                    <div class="text-start">
+                        <p class="text-secondary fs-4 mt-4 text-justify">
+                            تا حالا شده که به‌ دلیل کمبود امکانات و سیستم ضعیف از یادگیری نا امید بشی؟!
+                            دیگه نگران نباش، با این مجموعه ادیتورها حتی با ضعیف ترین گوشی موبایل یا کامپیوتر، با استفاده
+                            از
+                            زیرساخت های قدرتمند ما میتونی یه تجربه خیلی عالی از کدنویسی رو داشته باشی!
+                            فقط کافیه یکبار امتحانش کنی😉👇
+                        </p>
+                        <a href="{% url 'editor:code_editor_landing_page' %}" class="btn fs-4">بزن بریم!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

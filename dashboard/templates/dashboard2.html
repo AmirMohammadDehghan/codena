@@ -1,0 +1,172 @@
+{% extends './base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+    {{ course_detail.name }} داشبورد
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+
+{% block content %}
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="fw-bold fm-morabba text-light text-center">{{ user.username }} عزیز! به داشبورد کدنا خوش
+                اومدی</h1>
+            <div class="row">
+
+                <!-- start General information div -->
+                <div class="col-md-6 mt-3">
+                    <div class="card border shadow-0 h-100">
+                        <div class="card-body">
+
+                            <!-- start name, img, skill, address and tool btn div -->
+                            <div class="d-flex flex-column align-items-center py-3">
+                                <img src="{{ user.user_image.url }}" alt="Admin" class="rounded-circle" width="110"
+                                     height="110">
+                                <div class="mt-3">
+                                    <form method="post" action="/dashboard/update_user/" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="row mb-3">
+                                            <div class="col-sm-3">
+                                                <h6 class="mb-0"> پروفایل</h6>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                عکس پروفایل {{ form.user_image }}
+                                            </div>
+                                        </div>
+                                        <div class="row my-3">
+                                            <div class="col-sm-3">
+                                                <h6 class="mb-0">نام کامل</h6>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                {{ form.username }}
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-3">
+                                                <h6 class="mb-0">ایمیل</h6>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                {{ form.email }}
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-3">
+                                                <h6 class="mb-0">تلفن</h6>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                {{ form.phone_number }}
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn">ذخیره تغییرات</button>
+                                    </form>
+                                </div>
+                            </div><!-- end  name, img, skill, address and tool btn div -->
+                        </div>
+                    </div>
+                </div><!-- end General information div -->
+
+                <!-- start more information div -->
+                <div class="col-md-6 mt-3">
+
+                    <div class="card border">
+                        <div class="card-body">
+                            {% if course_selled %}
+                                <h5 class="d-flex align-items-center mb-3 fm-morabba">دوره های خریداری شده</h5>
+                                <div class="row justify-content-center mt-4">
+                                    {% for i in course_selled %}
+
+
+
+
+                                        <div class="col-xl-4 col-md-5 py-3">
+                                            <div class="card h-100 rounded-4">
+                                                <img src="{{ i.course.course_image.url }}"
+                                                     class="card-img-top rounded-4"
+                                                     alt="{{ i.course.name }}">
+                                                <div class="card-body">
+                                                    <h2 class="card-title text-light fs-6">{{ i.course.name }}</h2>
+                                                    <a href="{% url 'home:course_detail' pk=i.course.id slug=i.course.slug %}"
+                                                       class="btn btn-success mt-3">
+                                                        مشاهده ی دوره
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        </div>
+                                    {% endfor %}
+                                <hr>
+                            {% else %}
+                                <hr>
+
+
+                                <p class="fs-5 text-secondary">
+                                    شما هیچ دوره خریداری شده ای ندارید!
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                    <div class="card border">
+                        <div class="card-body">
+                            {% if faze_selled %}
+                                <h5 class="d-flex align-items-center mb-3 fm-morabba">فاز های خریداری شده</h5>
+                                <div class="row justify-content-center mt-4">
+                                    {% for i in faze_selled %}
+
+
+
+
+                                        <div class="col-xl-4 col-md-5 py-3">
+                                            <div class="card h-100 rounded-4">
+                                                <img src="{{ i.course_faze.course.course_image.url }}"
+                                                     class="card-img-top rounded-4"
+                                                     alt="{{ i.course.name }}">
+                                                <div class="card-body">
+                                                    <h2 class="card-title text-light fs-6">{{ i.course_faze.name }} {{ i.course_faze.course.name }}</h2>
+                                                    <a href="{% url 'home:course_detail' pk=i.course_faze.course.id slug=i.course_faze.course.slug %}"
+                                                       class="btn btn-success mt-3">
+                                                        مشاهده ی دوره
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    {% endfor %}</div>
+                                <hr>
+                            {% else %}
+                                <hr>
+
+
+                                <p class="fs-5 text-secondary">
+                                    شما هیچ فازی خریداری شده ای ندارید!
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div><!-- end more information div -->
+
+            </div>
+
+        </div>
+    </section>
+
+
+{% endblock content %}

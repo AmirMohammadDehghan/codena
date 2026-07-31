@@ -1,0 +1,107 @@
+{% extends '../base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+ درباره آکادمی کد نویسی کدنا 
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/swiper-custom.css' %}">
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+{% block script %}
+<!-- swiper js -->
+<script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/slider.js' %}"></script>
+
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+
+
+
+
+{% block content %}
+
+
+
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="badge bg-primary fs-4 rounded-5">ارتباط با ما</span>
+                <h1 class="mt-4 fw-bold text-light title">
+                    با ما در ارتباط بمانید (:
+                </h1>
+                <div class="row align-items-center justify-content-center mt-5">
+                    <div class="col-md-12 col-xl-6">
+                        <h2 class="fw-bold text-light fm-morabba">
+                            صفحات ما در شبکات اجتماعی
+                        </h2>
+                        <p class="text-secondary fs-5 my-3 lh-lg">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                            تکنولوژی
+                            مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
+                        </p>
+                        <a href="" class="btn btn-outline-light">
+                            <span>به ما بپیوندید</span>
+                        </a>
+                    </div>
+                    <div class="col-md-12 col-xl-6">
+                        <div class="swiper" id="heroSlider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/pyCoures.png" class="img-fluid rounded-4" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/OsinetCoures.png" class="img-fluid rounded-4" alt="">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/img/blackNetwoekCoures.png" class="img-fluid rounded-4" alt="">
+                                </div>
+                            </div>
+                            <div
+                                class="swiper-button-next btn rounded-circle d-flex align-items-center justify-content-center swiper-button-next-hero shadow">
+                                <svg x="0px" y="0px" id="nextIcon" viewBox="0 0 32 32"
+                                    style="enable-background:new 0 0 32 32;">
+                                    <path d="M11.5,26c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4l8.3-8.3l-8.3-8.3c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l9,9
+                    c0.4,0.4,0.4,1,0,1.4l-9,9C12,25.9,11.8,26,11.5,26z" />
+                                </svg>
+
+                            </div>
+                            <div
+                                class="swiper-button-prev btn rounded-circle d-flex align-items-center justify-content-center swiper-button-prev-hero shadow">
+                                <svg x="0px" y="0px" id="prevIcon" viewBox="0 0 32 32"
+                                    style="enable-background:new 0 0 32 32;">
+                                    <path d="M11.5,26c-0.3,0-0.5-0.1-0.7-0.3c-0.4-0.4-0.4-1,0-1.4l8.3-8.3l-8.3-8.3c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0l9,9
+                    c0.4,0.4,0.4,1,0,1.4l-9,9C12,25.9,11.8,26,11.5,26z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <div class="container">
+            <h2 class="fs-1 fw-bold text-light mb-4 fm-morabba">تماس با ما :</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">شماره تلفن</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="massage" class="form-label">پیغام شما</label>
+                    <textarea name="" id="massage" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-light btn-lg">ارسال</button>
+            </form>
+        </div>
+    </section>
+{% endblock content %}

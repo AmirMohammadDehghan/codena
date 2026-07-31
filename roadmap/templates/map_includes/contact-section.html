@@ -1,0 +1,20 @@
+{% load static %}
+
+<section class="section-height-fit mt-5">
+        <div class="container">
+            <h4 class="fw-bold text-light fm-morabba mb-0">
+                مشاوره با اساتید
+            </h4>
+            <p class="text-secondary text-justify mt-3">
+                یکی از مواردی که برای شروع هر مسیری شاید بهش نیاز داشته باشی.
+                مشاوره اختصاصی با منتورهای کار بلده تا متناسب با شرایط و ابعاد زندگی، سلایق، اهداف و خواسته هات بهترین
+                مسیر رو پیدا کنی.
+                برای این موضوع ما برات این فضا رو فراهم کردیم
+            </p>
+            <form method="post" action="{% url 'process_payment' %}" class="needs-validation" novalidate>
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+    </form>
+        </div>
+    </section>

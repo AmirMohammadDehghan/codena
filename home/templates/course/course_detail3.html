@@ -1,0 +1,228 @@
+﻿{% extends '../base.html' %}
+{% comment %} extend base temp {% endcomment %}
+{% load static %}
+{% comment %} load static files {% endcomment %}
+{% block title %}
+    {{ course_detail.name }} دوره
+{% endblock title %}
+{% comment %} choise title of this page {% endcomment %}
+
+{% block css %}
+
+    
+    <link rel="stylesheet" href="{% static 'assets/css/courses.css' %} ">
+
+
+    <style>
+        #descriptionsContianer {
+            max-height: 515px;
+            overflow: hidden;
+        }
+
+        #descriptionsContianer.open {
+            max-height: fit-content;
+        }
+    </style>
+    <style>
+    .discount-card {
+        position: relative;
+        box-shadow: 0px 20px 35px -16px rgba(255, 16, 39, 0.57);
+    }
+
+    .special-discount {
+        position: absolute;
+        top: -15px;
+        transform: translateX(-50%);
+        left: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, .08) !important;
+        background: rgb(255 255 255 / 2%) !important;
+    }
+
+    .discount-card .card-body {
+        padding: 10px 12px;
+    }
+
+    .discount-card::after {
+        position: absolute;
+        content: "";
+        top: 15px;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        transform: scale(0.9) translateZ(0);
+        filter: blur(15px);
+        background: linear-gradient(to left, #ff577038, #e4428d47, #c42da840, #9e16c369, #6501de5e, #9e16c361, #c42da842, #e4428d6e, #ff57709c);
+        background-size: 200% 200%;
+        -webkit-animation: animateGlow 1.25s linear infinite;
+        animation: animateGlow 1.25s linear infinite;
+    }
+</style>
+{% endblock css %}
+{% comment %} add special css for this page {% endcomment %}
+
+
+{% block course_css %}
+    <link rel="stylesheet" href="{% static 'assets/css/video.css' %} ">
+{% endblock course_css %}
+{% block script %}
+    <!-- courses script -->
+    <script src="{% static 'assets/js/courses.js' %} "></script>
+    <script src="{% static 'assets/js/jquery-3.1.1.min.js' %} "></script>
+    <script src="{% static 'assets/js/cart_sys_script.js' %} "></script>
+
+{% endblock script %}
+{% comment %} add special js codes for this page {% endcomment %}
+{% block course_js %}
+    <!-- video js -->
+    <script src="{% static 'assets/js/video.js' %} "></script>
+
+    <script>
+    createVideoPlayer("#videoIntroduction")
+    createVideoPlayer("#videoCourses")
+</script>
+<script>
+
+var futureTime = document.querySelector(".discount-card").getAttribute("data-future-time");
+    var countDownDate = new Date(futureTime).getTime();
+    function convertEnNumberToPersian(number) {
+        const persian = {
+            0: "۰",
+            1: "۱",
+            2: "۲",
+            3: "۳",
+            4: "۴",
+            5: "۵",
+            6: "۶",
+            7: "۷",
+            8: "۸",
+            9: "۹",
+        };
+        number = number.toString().split("");
+        let persianNumber = "";
+        for (let i = 0; i < number.length; i++) {
+            number[i] = persian[number[i]];
+        }
+        for (let i = 0; i < number.length; i++) {
+            persianNumber += number[i];
+        }
+        return persianNumber;
+    };
+    var countdownfunction = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.querySelector(".days").innerHTML = convertEnNumberToPersian(days);
+        document.querySelector(".hours").innerHTML = convertEnNumberToPersian(hours);
+        document.querySelector(".minutes").innerHTML = convertEnNumberToPersian(minutes);
+        document.querySelector(".seconds").innerHTML = convertEnNumberToPersian(seconds);
+    }, 1000);
+
+
+
+</script>
+<script>
+    function addCommas(number) {
+        var numString = number.toString();
+        var result = "";
+        var count = 0;
+
+        for (var i = numString.length - 1; i >= 0; i--) {
+            result = numString.charAt(i) + result;
+            count++;
+            if (count % 3 === 0 && i !== 0) {
+                result = "," + result;
+            }
+        }
+
+        return result;
+    }
+
+    const numbersElem = document.querySelectorAll("[data-num]")
+    numbersElem.forEach(el => {
+        let inputNum = el.getAttribute("data-num")
+        let outPutNum = addCommas(inputNum)
+        el.innerHTML = outPutNum
+    })
+</script>
+{% endblock course_js %}
+
+{% block content %}
+
+
+    <!-- Way url section -->
+    {% include './course_includes/way-url-section.html' %}
+    <!-- Way url section -->
+
+
+
+
+    <!-- hero section -->
+    {% include './course_includes/hero-section.html' %}
+    <!-- hero section -->
+
+
+
+    <!-- buy section -->
+    {% include './course_includes/buy-section.html' %}
+    <!-- buy section -->
+
+
+    <!-- tab contents section -->
+    {% include './course_includes/tab-contents-section.html' %}
+    <!-- tab contents section -->
+
+
+
+
+<style>
+    .discount-card {
+        position: relative;
+        box-shadow: 0px 20px 35px -16px rgba(255, 16, 39, 0.57);
+    }
+
+    .special-discount {
+        position: absolute;
+        top: -15px;
+        transform: translateX(-50%);
+        left: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, .08) !important;
+        background: rgb(255 255 255 / 2%) !important;
+    }
+
+    .discount-card .card-body {
+        padding: 10px 12px;
+    }
+
+    .discount-card::after {
+        position: absolute;
+        content: "";
+        top: 15px;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        transform: scale(0.9) translateZ(0);
+        filter: blur(15px);
+        background: linear-gradient(to left, #ff577038, #e4428d47, #c42da840, #9e16c369, #6501de5e, #9e16c361, #c42da842, #e4428d6e, #ff57709c);
+        background-size: 200% 200%;
+        -webkit-animation: animateGlow 1.25s linear infinite;
+        animation: animateGlow 1.25s linear infinite;
+    }
+</style>
+
+
+
+
+{% endblock content %}

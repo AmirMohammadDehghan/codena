@@ -1,0 +1,22 @@
+@media only screen and (max-width:556px) {
+    .courses .card-data {
+        margin-top: 0 !important;
+    }
+
+    .courses .card-body {
+        padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
